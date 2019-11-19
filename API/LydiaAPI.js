@@ -10,7 +10,7 @@ const phone_md5_p33 = '977dc13b4cc170bafdaa2b2a05d51045' //num en +33
 
 export function getInformationsFromAPI(){
 
-  const url = URL_LYDIA_TEST + '/api/user/isregister.json?data=' + phone_md5_p33
+  const url = URL_LYDIA_PROD + '/api/user/isregister.json?data=' + phone_md5_p33
   return fetch(url, {
     method: 'GET',
     headers:{
