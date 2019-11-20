@@ -23,7 +23,6 @@ class TestAPI extends React.Component {
       if(this.phoneText.length == 12){
         getInformationsFromAPI(md5(this.phoneText))
           .then((responseJson) => {
-            console.log(responseJson.register)
             if(responseJson.register == 1){
               this.setState({
                 isRegistered:1
@@ -44,15 +43,14 @@ class TestAPI extends React.Component {
   }
 
   _phoneTextInputChanged(phone) {
-
         this.phoneText = phone
-        console.log(this.phoneText , ' size : ' , this.phoneText.length)
-    }
+  }
 
   render(){
     return (
       <View style={styles.main_container}>
         <TextInput
+            keyboardType='phone-pad'
             ref= {this.phoneInput}
             placeholder=' example : +33600112233'
             onChangeText={(phone) => this._phoneTextInputChanged(phone)}
