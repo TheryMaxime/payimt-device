@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import TestAPI from './Components/TestAPI'
+import LoginIMT from './Components/LoginIMT'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <TestAPI/>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
