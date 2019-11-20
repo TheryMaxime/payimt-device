@@ -6,7 +6,7 @@ import LoginIMT from './Components/LoginIMT'
 export default class App extends React.Component {
   render() {
     return (
-      <LoginIMT/>
+      <TestAPI/>
     )
   }
 }
