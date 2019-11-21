@@ -29,7 +29,7 @@ const EventStackNavigator = createStackNavigator({
   Event: {
     screen: Event,
     navigationOptions: {
-      title: 'Evennement'
+      title: 'Events'
     }
   },
   EventDetail: {
