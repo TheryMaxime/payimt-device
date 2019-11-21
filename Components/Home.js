@@ -2,6 +2,8 @@
 
 import React from 'react'
 import {FlatList, View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, StatusBar, TouchableOpacity, ImageBackground } from 'react-native'
+import transactionsTests from '../Helpers/testData'
+import TransactionHistoryItem from './TransactionHistoryItem'
 
 function Separator() {
   return <View style={styles.separator} />
@@ -19,17 +21,30 @@ class Home extends React.Component {
   render(){
     return(
       <View style={styles.main_container}>
-        <ImageBackground source={require('../assets/imt_theme_opacity060.png')} style={styles.imagebackground}>
+        <ImageBackground
+          source={require('../assets/imt_theme_opacity060.png')}
+          style={styles.imagebackground}>
+
           <View style = {styles.topview}>
+
             <Image
               style={styles.logoIMT}
               source={require('../assets/imt_logo_transparency.png')}
             />
+
             <Text style={styles.payImt}>Pay'IMT</Text>
-            <Image
-              style={styles.currentUser}
-              source={require('../assets/user.png')}
-            />
+
+            <View style={styles.userview}>
+              <View style={{flex:1}}></View>
+              <TouchableOpacity style={{flex:2}}>
+                <Image
+                  style={styles.currentUser}
+                  source={require('../assets/user.png')}
+                />
+              </TouchableOpacity>
+              <View style={{flex:1}}></View>
+            </View>
+
           </View>
 
           <View style={styles.lydiabalance}>
@@ -37,7 +52,14 @@ class Home extends React.Component {
             <Text style={styles.balance}>15,99 €</Text>
           </View>
 
-
+          <View style={styles.flatlistview}>
+            <FlatList
+              style={styles.flatlist}
+              data={transactionsTests}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={({item}) => <TransactionHistoryItem transactionsTest={item}/>}
+            />
+          </View>
         </ImageBackground>
       </View>
     )
@@ -75,19 +97,21 @@ const styles = StyleSheet.create({
     color: 'rgb(0,31,65)',
     textAlign:'center',
   },
-  currentUser:{
+  userview:{
     flex:1,
+    flexDirection:'row',
+    justifyContent: 'center'
+  },
+  currentUser:{
     width:55,
     height:55,
     resizeMode:'contain',
   },
   lydiabalance:{
-    flex:1,
     flexDirection:'row',
-    position:'absolute',
-    marginTop:200,
+    marginTop:50,
     width: 350,
-    height:150,
+    height:200,
     borderColor:'rgb(0,31,65)',
     borderWidth:3,
     borderRadius: 10,
@@ -107,6 +131,14 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     color:'rgb(0,31,65)',
   },
+  flatlistview:{
+    marginTop:30,
+    borderWidth:3,
+    height:350,
+    borderRadius:10,
+    borderColor:'rgb(0,31,65)',
+    paddingTop:2.5
+  }
 })
 
 export default Home
