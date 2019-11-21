@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import TestAPI from './Components/TestAPI'
-import LoginIMT from './Components/LoginIMT'
+import Navigation from './Navigation/Navigation'
 
 export default class App extends React.Component {
   render() {
     return (
-      <TestAPI/>
+      <Navigation/>
     )
   }
 }

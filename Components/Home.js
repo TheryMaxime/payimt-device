@@ -8,7 +8,7 @@ function Separator() {
   return <View style={styles.separator} />
 }
 
-class Accueil extends React.Component {
+class Home extends React.Component {
 
   constructor(){
     super()
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
     marginTop:20
   }
 })
-export default Accueil
+export default Home
