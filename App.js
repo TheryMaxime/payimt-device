@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Navigation from './Navigation/Navigation'
+import TestAPI from './Tests/TestAPI'
+import LoginIMT from './Components/LoginIMT'
+import Home from './Components/Home'
 
 export default class App extends React.Component {
   render() {
     return (
-      <Navigation/>
+      <Home/>
     )
   }
 }
