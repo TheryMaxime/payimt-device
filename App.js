@@ -3,11 +3,19 @@ import { StyleSheet, Text, View } from 'react-native';
 import TestAPI from './Tests/TestAPI'
 import LoginIMT from './Components/LoginIMT'
 import Home from './Components/Home'
+import Shop from './Components/Shop'
+
+import Navigation from './Navigation/Navigation'
+
+import { Provider } from 'react-redux'
+import Store from './Store/configureStore'
 
 export default class App extends React.Component {
   render() {
     return (
-      <Home/>
+      <Provider store={Store}>
+        <Navigation/>
+      </Provider>
     )
   }
 }
