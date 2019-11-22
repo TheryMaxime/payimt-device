@@ -1,7 +1,7 @@
 // Components/SearchDetail.js
 
 import React from 'react'
-import {ActivityIndicator, FlatList, View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, StatusBar, TouchableOpacity, ImageBackground } from 'react-native'
+import {ActivityIndicator, FlatList, View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, StatusBar, TouchableOpacity, ImageBackground, InputText } from 'react-native'
 import eventTests from '../Helpers/testDataEvent'
 import {getContact} from '../API/APItests'
 
@@ -26,10 +26,15 @@ class SearchDetail extends React.Component {
   }
 
   componentDidMount(){
+    /*
     getContact(this.props.navigation.state.params.idContact).then(data => {
       this.setState({
         contact: data
       })
+    })
+    */
+    this.setState({
+      contact: getContact(this.props.navigation.state.params.idContact)
     })
   }
 
@@ -43,7 +48,7 @@ class SearchDetail extends React.Component {
           </View>
 
           <View style={styles.amountview}>
-            <InputText
+            <TextInput
               style={styles.amountinputtext}
               placeholder='Ex: 5,2 €'
               ref= {this.searchInput}

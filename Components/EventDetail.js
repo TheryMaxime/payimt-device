@@ -19,10 +19,15 @@ class EventDetail extends React.Component {
   }
 
   componentDidMount(){
+    /*
     getEvent(this.props.navigation.state.params.idEvent).then(data => {
       this.setState({
         event: data
       })
+    })
+    */
+    this.setState({
+      event: getEvent(this.props.navigation.state.params.idEvent)
     })
   }
 
