@@ -25,7 +25,7 @@ class Event extends React.Component {
   }
 
   _displayDetailForEvent = (idEvent) => {
-    console.log("Display event with id " + idEvent)
+    //console.log("Display event with id " + idEvent)
      this.props.navigation.navigate("EventDetail", {idEvent: idEvent})
   }
 

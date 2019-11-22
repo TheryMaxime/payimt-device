@@ -5,7 +5,6 @@ const initialState = { cart: [] }
 function manageCart(state = initialState, action) {
   let nextState
   let itemIndex
-  console.log(state)
   switch (action.type) {
     case 'ADD_ITEM':
       /*
