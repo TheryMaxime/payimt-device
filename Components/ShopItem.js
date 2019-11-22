@@ -83,7 +83,8 @@ const styles = StyleSheet.create({
     fontSize: 26,
     flex: 1,
     flexWrap: 'wrap',
-    paddingRight: 5
+    paddingRight: 5,
+    color: 'rgb(0,31,65)'
   },
   price_text: {
     fontWeight: 'bold',
@@ -97,8 +98,7 @@ const styles = StyleSheet.create({
   amount_text: {
     flex: 1,
     fontWeight: 'bold',
-    fontSize: 26,
-    color: '#666666'
+    fontSize: 26
   },
   image_interaction: {
     margin: 5

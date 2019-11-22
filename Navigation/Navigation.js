@@ -12,7 +12,7 @@ import Shop from '../Components/Shop'
 import ShopDetail from '../Components/ShopDetail'
 import Event from '../Components/Event'
 import EventDetail from '../Components/EventDetail'
-
+/*
 const SearchStackNavigator = createStackNavigator({
   Search: {
     screen: Search,
@@ -36,7 +36,7 @@ const EventStackNavigator = createStackNavigator({
     screen: EventDetail
   }
 })
-
+*/
 
 
 const ShopStackNavigator = createStackNavigator({
@@ -51,6 +51,7 @@ const ShopStackNavigator = createStackNavigator({
   }
 })
 
+/*
 const PayIMTNavigator = createBottomTabNavigator({
  Home: {
     screen: Home,
@@ -109,5 +110,5 @@ const styles = StyleSheet.create({
     height: 30
   }
 })
-
-export default createAppContainer(PayIMTTabNavigator)
+*/
+export default createAppContainer(ShopStackNavigator)

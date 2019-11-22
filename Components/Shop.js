@@ -36,8 +36,8 @@ class Shop extends React.Component {
     this.props.dispatch(action)
   }
 
-  _pay() {
-
+  _pay = () => {
+    this.props.navigation.navigate("ShopDetail", { cart: this.props.cart })
   }
 
   renderSeparator = () => {
@@ -46,7 +46,7 @@ class Shop extends React.Component {
         style={{
           height: 1,
           width: "72%",
-          backgroundColor: "#CED0CE",
+          backgroundColor: "rgb(0, 31, 65)",
           marginLeft: "14%"
         }}
       />
@@ -75,7 +75,7 @@ class Shop extends React.Component {
               />
             </View>
             <View style={styles.validation_container}>
-              <Button title='payer'/>
+              <Button title='payer' onPress={this._pay}/>
             </View>
           </SafeAreaView>
         </ImageBackground>
@@ -95,8 +95,7 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   contentView: {
-    flex: 1,
-    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+    flex: 1
   },
   list_container: {
     flex: 1,
