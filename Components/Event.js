@@ -13,7 +13,6 @@ class Event extends React.Component {
 
   constructor(props){
     super(props)
-    console.log(props);
     this.searchInput = React.createRef()
     this.searchText =""
     this.state={
@@ -25,12 +24,9 @@ class Event extends React.Component {
         console.log(this.searchText);
   }
 
-  /*_displayDetailForEvent = (idEvent) => {
-    this.props.navigation.navigate("EventDetail", {idEvent: idEvent})
-  }*/
-
-  _displayDetailForEvent = (idFilm) => {
-    console.log("Display film with id " + idFilm)
+  _displayDetailForEvent = (idEvent) => {
+    console.log("Display event with id " + idEvent)
+     this.props.navigation.navigate("EventDetail", {idEvent: idEvent})
   }
 
   _showSearchedText(){
@@ -38,7 +34,7 @@ class Event extends React.Component {
   }
 
   render(){
-    console.log(this.props);
+    console.log(this.props)
     return(
       <View style={styles.main_container}>
         <ImageBackground

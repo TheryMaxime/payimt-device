@@ -1,13 +1,14 @@
 // API/LydiaAPI.js
 
-const API_TOKEN = "5ac63d8703fc4447001415" //token public lydia BDE --> Vendor token
+const API_PUBLIC_TOKEN_PROD = "5ac63d8703fc4447001415" //--> Vendor token (prod)
+const API_PRIVATE_TOKEN_PRO = "5ac63d8715eb7991881236" //--> private prod
+const API_PUBLIC_TOKEN_TESTS = "" //--> Vendor token test (en attente)
+const API_PRIVATE_TOKEN_TESTS = "" //--> private tests (en attente)
+
 const URL_LYDIA_TEST = "https://homologation.lydia-app.com"
 const URL_LYDIA_PROD = "https://lydia-app.com"
-const phone = "0767533917"
-const phone_md5 = '092cde9c583213dbc78036c000075065' //num normal
-const phone_md5_p33 = '977dc13b4cc170bafdaa2b2a05d51045' //num en +33
 
-export function getInformationsFromAPI(phone){
+export function isregisterFromAPI(phone){
 
   const url = URL_LYDIA_PROD + '/api/user/isregister.json?data=' + phone
   return fetch(url, {
@@ -18,10 +19,11 @@ export function getInformationsFromAPI(phone){
     },
   })
     .then((response) => { return response.json()})
+    .catch((error) => console.error(error))
 }
-
-/*export function createFakeAccount_test(){
-  const url = URL_LYDIA_TEST + '/api/auth/register.json'
+/*
+export function loginFromAPI(phone, password){
+  const url = URL_LYDIA_TEST + '/api/auth/login.json'
   return fetch(url, {
     method: 'POST',
       headers: {
@@ -29,14 +31,10 @@ export function getInformationsFromAPI(phone){
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        vendor_token: API_TOKEN,
-        firstname: 'Antoine',
-        lastname:'Bchz',
-        email:'abz@abz.com',
-        phone:'+33000000001',
-        password:'password1',
+        phone: phone,
+        password: password,
       })
   })
-    .then((response) => { response.json().then((response) => {console.log(response)})})
+    .then((response) => { return response.json()})
     .catch((error) => console.error(error))
 }*/

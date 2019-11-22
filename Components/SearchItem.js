@@ -43,17 +43,17 @@ const styles = StyleSheet.create({
    marginLeft:5,
    textAlign:'left',
    textAlignVertical:'center',
-   fontSize:20,
-   fontWeight:'bold',
+   fontSize:30,
+   //fontWeight:'bold',
    color:'rgb(0,31,65)'
  },
  lastname:{
-   flex:2,
+   flex:1,
    height:30,
   // marginLeft:5,
    textAlign:'left',
    textAlignVertical:'center',
-   fontSize:20,
+   fontSize:30,
    fontWeight:'bold',
    color:'rgb(0,31,65)'
  }

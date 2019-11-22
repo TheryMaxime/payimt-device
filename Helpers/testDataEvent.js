@@ -15,7 +15,7 @@ export default data = [
       date:'10/11/12',
       price:"free",
       club:"Bar",
-      description:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      description:"bbbbbbbbbbbbbbbbbbbbbbbb"
    },
    {
       id:3,
@@ -23,6 +23,7 @@ export default data = [
       date:'10/11/12',
       price:"5,6 €",
       club:"paid",
+      description:"ccccccccccccccccccccccccccccccc"
    },
    {
       id:4,

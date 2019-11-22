@@ -3,9 +3,7 @@
 import React from 'react'
 import {ActivityIndicator, FlatList, View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, StatusBar, TouchableOpacity, ImageBackground } from 'react-native'
 import eventTests from '../Helpers/testDataEvent'
-import EventItem from './EventItem'
-
-//{moment(new Date(film.release_date)).format('DD/MM/YYY')}
+import {getContact} from '../API/APItests'
 
 function Separator() {
   return <View style={styles.separator} />
@@ -17,6 +15,9 @@ class SearchDetail extends React.Component {
     super(props)
     this.searchInput = React.createRef()
     this.amountText = ""
+    this.state ={
+      contact: undefined
+    }
   }
 
   _amountTextInputChanged(text) {
@@ -24,9 +25,17 @@ class SearchDetail extends React.Component {
         console.log(this.amountText);
   }
 
-  /*_displayContactActions(){
-    const contact = this.state
-    if(event_ != undefined){
+  componentDidMount(){
+    getContact(this.props.navigation.state.params.idContact).then(data => {
+      this.setState({
+        contact: data
+      })
+    })
+  }
+
+  _displayContactActions(){
+    const contact = this.state.contact
+    if(contact != undefined){
       return(
         <View style={styles.contactdetail}>
           <View style={styles.contacttextview}>
@@ -58,7 +67,7 @@ class SearchDetail extends React.Component {
         </View>
       )
     }
-  }*/
+  }
 
   render(){
     return(
@@ -89,7 +98,7 @@ class SearchDetail extends React.Component {
 
           </View>
 
-        //  {this._displayContactActions()}
+          {this._displayContactActions()}
 
 
         </ImageBackground>

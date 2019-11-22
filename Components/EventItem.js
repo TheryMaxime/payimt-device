@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
-import data from '../Helpers/testDataEvent'
 
 class EventItem extends React.Component {
 
@@ -12,7 +11,7 @@ class EventItem extends React.Component {
 
   render() {
     const event_ = this.props.event
-    const displayDetailForEvent= this.props.displayDetailForEvent
+    const displayDetailForEvent = this.props.displayDetailForEvent
     return (
       <TouchableOpacity
         style={styles.main_container}

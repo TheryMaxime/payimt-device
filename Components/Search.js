@@ -24,12 +24,8 @@ class Search extends React.Component {
         console.log(this.searchText);
   }
 
-  /*_displayDetailForSearch = (idEvent) => {
-    this.props.navigation.navigate("EventDetail", {idEvent: idEvent})
-  }*/
-
-  _displayDetailForSearch = (idFilm) => {
-    console.log("Display film with id " + idFilm)
+  _displayDetailForSearch = (idContact) => {
+    this.props.navigation.navigate("SearchDetail", {idContact: idContact})
   }
 
   _showSearchedText(){
@@ -37,7 +33,7 @@ class Search extends React.Component {
   }
 
   render(){
-    console.log(this.props);
+    const {navigate} = this.props.navigation
     return(
       <View style={styles.main_container}>
         <ImageBackground
