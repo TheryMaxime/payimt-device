@@ -74,6 +74,7 @@ class Event extends React.Component {
                 ref= {this.searchInput}
                 placeholder=' example : Beer party'
                 onChangeText={(text) => this._searchTextInputChanged(text)}
+                clearButtonMode='always'
             />
             <Button
               title='Rechercher un évènement'
