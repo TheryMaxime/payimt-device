@@ -1,31 +1,27 @@
-// Components/EventItem.js
+// Components/TransactionHistoryItem.js
 
 import React from 'react'
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
+import data from '../Helpers/testData'
 
-class EventItem extends React.Component {
-
+class TransactionHistoryItem extends React.Component {
   constructor(props){
     super(props)
   }
-
   render() {
-    const event_ = this.props.event
-    const displayDetailForEvent = this.props.displayDetailForEvent
+    const transaction = this.props.transactionsTest
     return (
-      <TouchableOpacity
-        style={styles.main_container}
-        onPress={() => displayDetailForEvent(event_.id)}>
+      <View style={styles.main_container}>
         <View style={styles.leftcontainer}>
-          <Text style={styles.name}>{event_.name}</Text>
-          <Text style={styles.date}>{event_.date}</Text>
+          <Text style={styles.name}>{transaction.name}</Text>
+          <Text style={styles.date}>{transaction.date}</Text>
         </View>
 
         <View style={styles.rightcontainer}>
-          <Text style={styles.price}>{event_.price}</Text>
-          <Text style={styles.club}>{event_.club}</Text>
+          <Text style={styles.amount}>{transaction.amount}</Text>
+          <Text style={styles.status}>{transaction.status}</Text>
         </View>
-      </TouchableOpacity>
+      </View>
     )
   }
 }
@@ -33,7 +29,7 @@ class EventItem extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flexDirection:'row',
-    height: 70,
+    height: 60,
     width: 330,
     marginTop:2.5,
     marginBottom:2.5,
@@ -41,7 +37,7 @@ const styles = StyleSheet.create({
     marginRight:5,
     borderWidth:1,
     borderRadius:10,
-    borderStyle:'dotted',
+    borderStyle:'dotted'
  },
  leftcontainer:{
    flex:1,
@@ -68,7 +64,7 @@ const styles = StyleSheet.create({
    fontSize:20,
    color:'rgb(0,31,65)'
  },
- price:{
+ amount:{
    height:30,
    marginRight:5,
    textAlign:'right',
@@ -77,7 +73,7 @@ const styles = StyleSheet.create({
    fontWeight:'bold',
    color:'rgb(0,31,65)'
  },
- club:{
+ status:{
    height:30,
    marginRight:5,
    textAlign:'right',
@@ -87,4 +83,4 @@ const styles = StyleSheet.create({
  },
 })
 
-export default EventItem
+export default TransactionHistoryItem
