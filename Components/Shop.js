@@ -95,12 +95,16 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   contentView: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center'
   },
   list_container: {
+    marginTop:30,
+    borderWidth:3,
+    borderRadius:10,
+    borderColor:'rgb(0,31,65)',
     flex: 1,
-    marginTop: 5,
-    marginBottom: 5
+    width: '90%'
   },
   validation_container: {
     marginBottom: 0

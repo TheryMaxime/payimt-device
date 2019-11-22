@@ -62,8 +62,16 @@ class ShopItem extends React.Component {
 
 const styles = StyleSheet.create({
   main_container: {
+    flexDirection:'row',
     height: 150,
-    flexDirection: 'row'
+    width: "95%",
+    marginTop:2.5,
+    marginBottom:2.5,
+    marginLeft:5,
+    marginRight:5,
+    borderWidth:1,
+    borderRadius:10,
+    borderStyle:'dotted',
   },
   image: {
     flex: 1,
