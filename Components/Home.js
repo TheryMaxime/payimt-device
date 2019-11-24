@@ -110,8 +110,8 @@ const styles = StyleSheet.create({
   lydiabalance:{
     flexDirection:'row',
     marginTop:50,
-    width: 350,
-    height:200,
+    width: '90%',
+    height:150,
     borderColor:'rgb(0,31,65)',
     borderWidth:3,
     borderRadius: 10,
@@ -134,10 +134,11 @@ const styles = StyleSheet.create({
   flatlistview:{
     marginTop:30,
     borderWidth:3,
-    height:350,
     borderRadius:10,
     borderColor:'rgb(0,31,65)',
-    paddingTop:2.5
+    paddingTop:2.5,
+    height:'50%',
+    width:'90%'
   }
 })
 

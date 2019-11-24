@@ -105,7 +105,6 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     width: Dimensions.get('window').width,
     height: 90,
-    marginTop: StatusBar.currentHeight,
     alignItems:'center',
     justifyContent:'center',
   },
@@ -136,23 +135,24 @@ const styles = StyleSheet.create({
     borderWidth:3,
     borderRadius:10,
     borderColor:'rgb(0,31,65)',
+    width:'90%'
   },
   buttonsearch:{
     backgroundColor:'rgb(0,31,65)',
   },
   textinput:{
     marginLeft:5,
-    width: 340,
+    marginRight:5,
     height:45,
     fontSize:20
   },
   flatlistview:{
     marginTop:30,
     borderWidth:3,
-    height:400,
     borderRadius:10,
     borderColor:'rgb(0,31,65)',
-    paddingTop:2.5,
+    width:'90%',
+    height:'60%',
   },
   separator:{
     marginTop:30,
