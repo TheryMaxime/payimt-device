@@ -25,28 +25,6 @@ class Home extends React.Component {
           source={require('../assets/imt_theme_opacity060.png')}
           style={styles.imagebackground}>
 
-          <View style = {styles.topview}>
-
-            <Image
-              style={styles.logoIMT}
-              source={require('../assets/imt_logo_transparency.png')}
-            />
-
-            <Text style={styles.payImt}>Pay'IMT</Text>
-
-            <View style={styles.userview}>
-              <View style={{flex:1}}></View>
-              <TouchableOpacity style={{flex:2}}>
-                <Image
-                  style={styles.currentUser}
-                  source={require('../assets/user.png')}
-                />
-              </TouchableOpacity>
-              <View style={{flex:1}}></View>
-            </View>
-
-          </View>
-
           <View style={styles.lydiabalance}>
             <Text style={styles.balancetext}>Your Lydia Balance :</Text>
             <Text style={styles.balance}>15,99 €</Text>
@@ -75,37 +53,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     alignItems:'center',
-  },
-  topview:{
-    flexDirection:'row',
-    width: Dimensions.get('window').width,
-    height: 90,
-    marginTop: StatusBar.currentHeight,
-    alignItems:'center',
-    justifyContent:'center',
-  },
-  logoIMT:{
-    flex:1,
-    width:55,
-    height:55,
-    resizeMode:'contain',
-  },
-  payImt:{
-    flex:2,
-    fontSize: 50,
-    fontWeight:'bold',
-    color: 'rgb(0,31,65)',
-    textAlign:'center',
-  },
-  userview:{
-    flex:1,
-    flexDirection:'row',
-    justifyContent: 'center'
-  },
-  currentUser:{
-    width:55,
-    height:55,
-    resizeMode:'contain',
   },
   lydiabalance:{
     flexDirection:'row',
