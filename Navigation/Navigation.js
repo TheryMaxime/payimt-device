@@ -12,12 +12,13 @@ import Shop from '../Components/Shop'
 import ShopDetail from '../Components/ShopDetail'
 import Event from '../Components/Event'
 import EventDetail from '../Components/EventDetail'
+import TopBar from '../Components/TopBar'
 
 const SearchStackNavigator = createStackNavigator({
   Search: {
     screen: Search,
     navigationOptions: {
-      title: 'Rechercher'
+      headerTitle: () => <TopBar title="Recherche"/>
     }
   },
   SearchDetail: {
@@ -29,7 +30,7 @@ const EventStackNavigator = createStackNavigator({
   Event: {
     screen: Event,
     navigationOptions: {
-      title: 'Events'
+      headerTitle: () => <TopBar title="Événements"/>
     }
   },
   EventDetail: {
@@ -43,7 +44,7 @@ const ShopStackNavigator = createStackNavigator({
   Shop: {
     screen: Shop,
     navigationOptions: {
-      title: 'Shop'
+      headerTitle: () => <TopBar title="Shop"/>
     }
   },
   ShopDetail: {
@@ -51,10 +52,19 @@ const ShopStackNavigator = createStackNavigator({
   }
 })
 
+const HomeStackNavigator = createStackNavigator({
+  Home: {
+    screen: Home,
+    navigationOptions: {
+      headerTitle: () => <TopBar title="Pay'IMT"/>
+    }
+  }
+})
+
 
 const PayIMTNavigator = createBottomTabNavigator({
  Home: {
-    screen: Home,
+    screen: HomeStackNavigator,
     navigationOptions: {
       tabBarIcon: () => {
         return <Image
