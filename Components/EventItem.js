@@ -34,11 +34,10 @@ const styles = StyleSheet.create({
   main_container: {
     flexDirection:'row',
     height: 70,
-    width: 330,
+    width: '98%',
+    alignSelf:'center',
     marginTop:2.5,
     marginBottom:2.5,
-    marginLeft:5,
-    marginRight:5,
     borderWidth:1,
     borderRadius:10,
     borderStyle:'dotted',
