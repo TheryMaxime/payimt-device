@@ -19,6 +19,16 @@ class ShopDetail extends React.Component {
 
   }
 
+
+  _changeID(array) {
+    let index = 0
+    for(index; index < array.length; index++) {
+      array[index].itemID = index;
+    }
+    return array
+  }
+
+
   renderSeparator = () => {
     return (
       <View
@@ -33,14 +43,14 @@ class ShopDetail extends React.Component {
   }
 
   render() {
-    const cart = this.props.navigation.getParam('cart')
+    const cart = this._changeID(this.props.navigation.getParam('cart'))
     return (
       <View style={styles.main_container}>
         <View style={styles.list_container}>
           <FlatList
             data={cart}
             ItemSeparatorComponent={this.renderSeparator}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item.itemID.toString()}
             renderItem={({item}) =>
             <View style={styles.item_container}>
               <Text style={styles.item_title}>{item.title}</Text>
