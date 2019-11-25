@@ -23,7 +23,7 @@ class Shop extends React.Component {
   _addToCart = (item) => {
     const action = {
       type: "ADD_ITEM",
-      value: item
+      value: Object.assign({}, item)
     }
     this.props.dispatch(action)
   }
