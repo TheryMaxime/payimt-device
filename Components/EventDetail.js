@@ -1,7 +1,7 @@
 // Components/EventDetail.js
 
 import React from 'react'
-import {ActivityIndicator, FlatList, View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, StatusBar, TouchableOpacity, ImageBackground } from 'react-native'
+import {ActivityIndicator, FlatList, View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, StatusBar, TouchableOpacity, ImageBackground, ScrollView } from 'react-native'
 import eventTests from '../Helpers/testDataEvent'
 import {getEvent} from '../API/APItests'
 
@@ -36,16 +36,20 @@ class EventDetail extends React.Component {
     const event_ = this.state.event
     if(event_ != undefined){
       return(
-        <View>
-          <View style={styles.view_container}>
-            <Text style={styles.description_text}>{event_.description}</Text>
-          </View>
 
+        <View style={{height:'70%'}}>
+          <Text style={styles.eventtitle}>{event_.name}</Text>
+          <Separator/>
+          <ScrollView style={styles.view_container}>
+            <Text style={styles.description_text}>{event_.description}</Text>
+          </ScrollView>
+          <Separator/>
           <Button style={styles.payevent}
             title='Pay event'
             color='rgb(0,31,65)'
             onPress={()=>alert('You\'ve bought a ticket for this event!')}
           />
+
         </View>
       )
     }
@@ -75,15 +79,26 @@ const styles = StyleSheet.create({
     alignItems:'center',
   },
   view_container:{
-    width:200,
-    height:200
+    width:'90%',
+    borderWidth:3,
+    borderRadius:10,
+    borderColor:'rgb(0,31,65)',
   },
   description_text:{
-    fontSize:50,
+    marginLeft:5,
+    fontSize:30,
   },
   payevent:{
 
   },
+  separator:{
+    marginTop:30
+  },
+  eventtitle:{
+    textAlign:'center',
+    fontSize:50,
+    color: 'rgb(0,31,65)'
+  }
 
 })
 
