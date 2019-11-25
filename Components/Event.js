@@ -84,23 +84,25 @@ const styles = StyleSheet.create({
     borderWidth:3,
     borderRadius:10,
     borderColor:'rgb(0,31,65)',
+    width:'90%'
   },
   textinput:{
     marginLeft:5,
-    width: 340,
+    marginRight:5,
     height:45,
     fontSize:20
   },
   flatlistview:{
     marginTop:30,
     borderWidth:3,
-    height:400,
     borderRadius:10,
     borderColor:'rgb(0,31,65)',
     paddingTop:2.5,
+    height:'60%',
+    width:'90%',
   },
   separator:{
-    marginTop:30,
+    marginTop:30
   }
 })
 

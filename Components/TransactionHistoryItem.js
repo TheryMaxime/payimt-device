@@ -30,14 +30,15 @@ const styles = StyleSheet.create({
   main_container: {
     flexDirection:'row',
     height: 60,
-    width: 330,
+    width: '98%',
     marginTop:2.5,
     marginBottom:2.5,
     marginLeft:5,
     marginRight:5,
     borderWidth:1,
     borderRadius:10,
-    borderStyle:'dotted'
+    borderStyle:'dotted',
+    alignSelf:'center'
  },
  leftcontainer:{
    flex:1,
