@@ -1,12 +1,14 @@
 // API/LydiaAPI.js
 
-const API_PUBLIC_TOKEN_PROD = "5ac63d8703fc4447001415" //--> Vendor token (prod)
-const API_PRIVATE_TOKEN_PRO = "5ac63d8715eb7991881236" //--> private prod
-const API_PUBLIC_TOKEN_TESTS = "" //--> Vendor token test (en attente)
-const API_PRIVATE_TOKEN_TESTS = "" //--> private tests (en attente)
+import LydiaConfiguration from './configuration/LydiaConfiguration'
 
-const URL_LYDIA_TEST = "https://homologation.lydia-app.com"
-const URL_LYDIA_PROD = "https://lydia-app.com"
+const API_PUBLIC_TOKEN_PROD = LydiaConfiguration.API_PUBLIC_TOKEN_PROD //--> Vendor token (prod)
+const API_PRIVATE_TOKEN_PRO = LydiaConfiguration.API_PRIVATE_TOKEN_PRO //--> private prod
+const API_PUBLIC_TOKEN_TESTS = LydiaConfiguration.API_PUBLIC_TOKEN_TESTS //--> Vendor token test (en attente)
+const API_PRIVATE_TOKEN_TESTS = LydiaConfiguration.API_PRIVATE_TOKEN_TESTS //--> private tests (en attente)
+
+const URL_LYDIA_TEST = LydiaConfiguration.URL_LYDIA_TEST
+const URL_LYDIA_PROD = LydiaConfiguration.URL_LYDIA_PROD
 
 export function isregisterFromAPI(phone){
 
