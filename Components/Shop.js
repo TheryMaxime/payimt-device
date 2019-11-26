@@ -1,10 +1,10 @@
 //Components/Shop.js
 
 import React from 'react'
-import { StyleSheet, Button, View, SafeAreaView, ImageBackground, Image, Dimensions, StatusBar, Text, Platform, FlatList } from 'react-native'
+import { StyleSheet, Button, View, SafeAreaView, ActivityIndicator, ImageBackground, Image, Dimensions, StatusBar, Text, Platform, FlatList } from 'react-native'
 import { connect } from 'react-redux'
 import ShopItem from './ShopItem'
-import data from '../Helpers/shopItemsData'
+import { getShopList } from '../API/ServerAPI'
 
 class Shop extends React.Component {
 
@@ -18,6 +18,23 @@ class Shop extends React.Component {
 
   _loadItems = () => {
     this.setState({isLoading: true})
+    getShopList().then(data => {
+      console.log(data.data)
+      this.setState({
+        shopItems: [...this.state.shopItems, ...data.data],
+        isLoading: false
+      })
+    })
+  }
+
+  _displayLoading() {
+    if (this.state.isLoading) {
+      return (
+        <View style={styles.loading_container}>
+            <ActivityIndicator size='large' />
+        </View>
+      )
+    }
   }
 
   _addToCart = (item) => {
@@ -53,6 +70,9 @@ class Shop extends React.Component {
     );
   }
 
+  componentDidMount() {
+    this._loadItems()
+  }
 
   render() {
     return(
@@ -61,7 +81,7 @@ class Shop extends React.Component {
           <SafeAreaView style={styles.contentView}>
             <View style={styles.list_container}>
               <FlatList
-                data={data}
+                data={this.state.shopItems}
                 extraData={this.props.cart}
                 ItemSeparatorComponent={this.renderSeparator}
                 keyExtractor={(item) => item.id.toString()}
@@ -77,6 +97,7 @@ class Shop extends React.Component {
             <View style={styles.validation_container}>
               <Button title='payer' onPress={this._pay}/>
             </View>
+            {this._displayLoading()}
           </SafeAreaView>
         </ImageBackground>
       </View>
@@ -108,6 +129,15 @@ const styles = StyleSheet.create({
   },
   validation_container: {
     marginBottom: 0
+  },
+  loading_container: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 100,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })
 
