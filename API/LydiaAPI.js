@@ -1,6 +1,7 @@
 // API/LydiaAPI.js
 import md5 from 'js-md5'
 
+<<<<<<< HEAD
 const API_PUBLIC_TOKEN_PROD = "5ac63d8703fc4447001415" //--> Vendor token (prod)
 const API_PRIVATE_TOKEN_PROD = "5ac63d8715eb7991881236" //--> private prod
 
@@ -9,9 +10,17 @@ const API_PRIVATE_TOKEN_TESTS = "5d95c26567952842723380" //--> private tests (en
 
 const NUM_LYDIA_TEST = "+33621491838"
 const NUM_LYDIA_TEST_MD5 = md5(NUM_LYDIA_TEST)
+=======
+import LydiaConfiguration from './configuration/LydiaConfiguration'
+>>>>>>> develop
 
-const URL_LYDIA_TEST = "https://homologation.lydia-app.com"
-const URL_LYDIA_PROD = "https://lydia-app.com"
+const API_PUBLIC_TOKEN_PROD = LydiaConfiguration.API_PUBLIC_TOKEN_PROD //--> Vendor token (prod)
+const API_PRIVATE_TOKEN_PRO = LydiaConfiguration.API_PRIVATE_TOKEN_PRO //--> private prod
+const API_PUBLIC_TOKEN_TESTS = LydiaConfiguration.API_PUBLIC_TOKEN_TESTS //--> Vendor token test (en attente)
+const API_PRIVATE_TOKEN_TESTS = LydiaConfiguration.API_PRIVATE_TOKEN_TESTS //--> private tests (en attente)
+
+const URL_LYDIA_TEST = LydiaConfiguration.URL_LYDIA_TEST
+const URL_LYDIA_PROD = LydiaConfiguration.URL_LYDIA_PROD
 
 
 export function buildSignature(){
