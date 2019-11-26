@@ -2,7 +2,7 @@
 import React from 'react'
 import md5 from 'js-md5'
 import { Text, View, Button, StyleSheet, TextInput } from 'react-native'
-import {getInformationsFromAPI} from '../API/LydiaAPI'
+import {paymentRequest_do, registerFromAPI, isregisterFromAPI, buildSignature, loginFromAPI, testVendorToken, createFakeAccount} from '../API/LydiaAPI'
 
 
 const isRegisteredMsg = 'You\'re registered'
@@ -19,7 +19,7 @@ class TestAPI extends React.Component {
     }
   }
 
-  _showInformationsFromAPI() {
+  /*_showInformationsFromAPI() {
       if(this.phoneText.length == 12){
         getInformationsFromAPI(md5(this.phoneText))
           .then((responseJson) => {
@@ -40,7 +40,26 @@ class TestAPI extends React.Component {
         alert('you must type a valid number. (example : +33600112233)')
         this.phoneInput.current.clear()
       }
-  }
+  }*/
+
+  _showInformationsFromAPI() {
+      paymentRequest_do().then((responseJson) => {console.log(responseJson)})
+    /*  isregisterFromAPI()
+        .then((responseJson) => {
+          console.log(responseJson);
+          if(responseJson.register == 1){
+            this.setState({
+              isRegistered:1
+            })
+          }
+          else{
+            this.setState({
+              isRegistered:0
+            })
+          }
+        })
+        .catch((error) => console.error(error))*/
+    }
 
   _phoneTextInputChanged(phone) {
         this.phoneText = phone

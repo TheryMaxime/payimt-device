@@ -2,7 +2,6 @@
 
 import React from 'react'
 import {View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox } from 'react-native'
-//import SafeAreaView from 'react-native-safe-area-view'
 
 function Separator() {
   return <View style={styles.separator} />
