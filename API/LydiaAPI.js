@@ -11,6 +11,11 @@ const API_PRIVATE_TOKEN_TESTS = LydiaConfiguration.API_PRIVATE_TOKEN_TESTS //-->
 const URL_LYDIA_TEST = LydiaConfiguration.URL_LYDIA_TEST
 const URL_LYDIA_PROD = LydiaConfiguration.URL_LYDIA_PROD
 
+const NUM_LYDIA_TEST = "+33621491838"
+const NUM_LYDIA_CREATED = "+33600112233"
+const PHONE_ANTOINE = "+33767533917"
+const PHONE_MAX = "+33633739225"
+
 
 export function buildSignature(){
   var params = {
@@ -27,17 +32,18 @@ export function buildSignature(){
 
 
 // OK
-export function paymentRequest_do(){
-  const url = URL_LYDIA_TEST + '/api/request/do.json'
+export function paymentRequest_do(amount){
+  const url = URL_LYDIA_PROD + '/api/request/do.json'
 
   let formData = new FormData()
-  formData.append('amount', '5.54')
-  formData.append('vendor_token', API_PUBLIC_TOKEN_TESTS)
+  formData.append('amount', amount)
+  formData.append('payment_method', 'lydia')
+  formData.append('vendor_token', API_PUBLIC_TOKEN_PROD)
+  formData.append('message','!! NE PAS TENIR COMPTE !! Test intégration API Lydia Antoine/Maxime (Problème ? Voir HOUSSEM)')
   //formData.append('user_token', NUM_LYDIA_TEST)
-  formData.append('recipient', NUM_LYDIA_TEST)
+  formData.append('recipient', PHONE_ANTOINE)
   formData.append('currency', 'EUR')
   formData.append('type', 'phone')
-
 
   return fetch(url, {
     method: 'POST',
@@ -65,12 +71,89 @@ export function isregisterFromAPI(){
     .catch((error) => console.error(error))
 }
 
-/*
+export function getPermissionsFromAPI(){
+  const url = URL_LYDIA_TEST + '/api/business/getpermission.json'
+
+  let formData = new FormData()
+  formData.append('vendor_token', API_PUBLIC_TOKEN_TESTS)
+  formData.append('cashier_phone', NUM_LYDIA_CREATED)
+
+  return fetch(url, {
+    method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: formData
+  })
+    .then((response) => { return response.json()})
+    .catch((error) => console.error(error))
+}
+
+
+export function removeCashierFromAPI(){
+
+  const url = URL_LYDIA_TEST + '/api/business/removecashier.json'
+
+  let formData = new FormData()
+  formData.append('vendor_token', API_PUBLIC_TOKEN_TESTS)
+  formData.append('cashier_phone', NUM_LYDIA_CREATED)
+
+  return fetch(url, {
+    method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: formData
+  })
+    .then((response) => { return response.json()})
+    .catch((error) => console.error(error))
+}
+
+
+export function getB2CbalanceFromAPI(){
+  const url = URL_LYDIA_TEST + '/api/business/b2cbalance.json'
+
+  let formData = new FormData()
+  formData.append('vendor_token', API_PUBLIC_TOKEN_TESTS)
+  formData.append('signature', md5("vendor_token="+API_PUBLIC_TOKEN_TESTS+"&"+API_PRIVATE_TOKEN_TESTS))
+
+  return fetch(url, {
+    method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: formData
+  })
+    .then((response) => { return response.json()})
+    .catch((error) => console.error(error))
+}
+
+export function getListTransactionsFromAPI(){
+  const url = URL_LYDIA_TEST + '/api/transaction/list.json'
+
+  let formData = new FormData()
+  formData.append('vendor_token', API_PUBLIC_TOKEN_TESTS)
+  formData.append('user_token', NUM_LYDIA_TEST)
+  formData.append('startDate', '2019-11-26 01:00:00')
+  formData.append('endDate', '2019-11-27 11:00:00')
+
+  return fetch(url, {
+    method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: formData
+  })
+    .then((response) => { return response.json()})
+    .catch((error) => console.error(error))
+}
+
+
 export function loginFromAPI(){
   const url = URL_LYDIA_TEST + '/api/auth/login.json'
 
   let formData = new FormData()
-  formData.append('phone', "+33600112233")
+  formData.append('phone', NUM_LYDIA_CREATED)
   formData.append('password', 'password')
 
   return fetch(url, {
@@ -83,7 +166,34 @@ export function loginFromAPI(){
   })
     .then((response) => { return response.json()})
     .catch((error) => console.error(error))
-}*/
+}
+
+// generated from lydia developer tool (5.54€)
+const QRCODE_CONTENT = '["fSsuWg4h5Wg7GDuQBLWYM6rjqb8kxqjunZ+6DgiuWwVbhVfGmOu0i5AoGIjX60o+L+WwPKeaUPyhAvepntFq9/iPSMVhxd6/Ut4VjKeqytj0K5D17w0Plp6wwJF/uAs9ENjscegXfR0jrl62qdr13qGyPwyFra31ZjK+rsLjcDA=","3"]'
+
+export function paymentToCashierFromAPI(){
+  const url = URL_LYDIA_TEST + '/api/payment/payment.json'
+
+  let formData = new FormData()
+  formData.append('vendor_token', API_PUBLIC_TOKEN_TESTS)
+  formData.append('phone', NUM_LYDIA_CREATED) // this num has cashier permissions (see getPermissionsFromAPI)
+  formData.append('paymentData', QRCODE_CONTENT)
+  formData.append('transmission', 'qrcode')
+  formData.append('amount','5.54')
+  formData.append('currency', 'EUR')
+  formData.append('order_id', 'ORDER_N_1')
+
+  return fetch(url, {
+    method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        //'Content-Type': 'application/json',
+      },
+      body: formData
+  })
+    .then((response) => { return response.json()})
+    .catch((error) => console.error(error))
+}
 
 /*
 export function registerFromAPI(){

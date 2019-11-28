@@ -1,8 +1,8 @@
 //Components/Shop.js
 
 import React from 'react'
-import { StyleSheet, View, FlatList, Button, Text } from 'react-native'
-
+import { StyleSheet, View, FlatList, Button, Text, Linking } from 'react-native'
+import { paymentRequest_do } from '../API/LydiaAPI'
 
 class ShopDetail extends React.Component {
 
@@ -16,9 +16,11 @@ class ShopDetail extends React.Component {
   }
 
   _finalize() {
-
+    let cart = this.props.navigation.getParam('cart')
+    paymentRequest_do(this._getTotalAmount(cart)).then((responseJson) => {
+      Linking.openURL(responseJson.mobile_url)
+    })
   }
-
 
   _changeID(array) {
     let index = 0
@@ -63,7 +65,7 @@ class ShopDetail extends React.Component {
           <Text style={styles.text}>{this._getTotalAmount(cart)}</Text>
         </View>
         <View style={styles.validation_container}>
-          <Button title='payer' onPress={this._finalize()}/>
+          <Button title='payer' onPress={() => this._finalize()}/>
         </View>
       </View>
     )

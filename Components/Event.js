@@ -15,7 +15,9 @@ class Event extends React.Component {
     super(props)
     this.searchInput = React.createRef()
     this.searchText =""
+    this.arrayholder = eventTests;
     this.state={
+      data: eventTests
     }
   }
 
@@ -25,7 +27,6 @@ class Event extends React.Component {
   }
 
   _displayDetailForEvent = (idEvent) => {
-    //console.log("Display event with id " + idEvent)
      this.props.navigation.navigate("EventDetail", {idEvent: idEvent})
   }
 
@@ -33,8 +34,18 @@ class Event extends React.Component {
     console.log(this.searchText)
   }
 
+  searchFilterFunction = text => {
+    const newData = this.arrayholder.filter(item => {
+      const itemData = `${item.name.toUpperCase()} ${item.club.toUpperCase()}`
+      const textData = text.toUpperCase()
+      return itemData.indexOf(textData) > -1
+    })
+    this.setState({
+      data: newData
+    })
+  };
+
   render(){
-    console.log(this.props)
     return(
       <View style={styles.main_container}>
         <ImageBackground
@@ -42,24 +53,22 @@ class Event extends React.Component {
           style={styles.imagebackground}>
 
           <Separator/>
+          <Text style={styles.searchevent}>Search an event by name or club:</Text>
           <View style={styles.searchview}>
             <TextInput
                 style={styles.textinput}
                 ref= {this.searchInput}
-                placeholder=' example : Beer party'
-                onChangeText={(text) => this._searchTextInputChanged(text)}
+                placeholder=' example : BDE, Afterwork...'
+                //onChangeText={(text) => this._searchTextInputChanged(text)}
+                onChangeText={text => this.searchFilterFunction(text)}
                 clearButtonMode='always'
             />
-            <Button
-              title='Rechercher un évènement'
-              color='rgb(0,31,65)'
-              onPress={()=>this._showSearchedText()}/>
           </View>
 
           <View style={styles.flatlistview}>
             <FlatList
               style={styles.flatlist}
-              data={eventTests}
+              data={this.state.data}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({item}) => <EventItem event={item} displayDetailForEvent={this._displayDetailForEvent}/>}
             />
@@ -79,6 +88,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     alignItems:'center',
+  },
+  searchevent:{
+    color:'rgb(0,31,65)',
+    fontSize:20,
+    fontStyle:'italic'
   },
   searchview:{
     borderWidth:3,

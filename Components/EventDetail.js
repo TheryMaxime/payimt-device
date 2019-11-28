@@ -1,9 +1,10 @@
 // Components/EventDetail.js
 
 import React from 'react'
-import {ActivityIndicator, FlatList, View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, StatusBar, TouchableOpacity, ImageBackground, ScrollView } from 'react-native'
+import {Linking, ActivityIndicator, FlatList, View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, StatusBar, TouchableOpacity, ImageBackground, ScrollView } from 'react-native'
 import eventTests from '../Helpers/testDataEvent'
 import {getEvent} from '../API/APItests'
+import {paymentRequest_do} from '../API/LydiaAPI'
 
 function Separator() {
   return <View style={styles.separator} />
@@ -31,6 +32,16 @@ class EventDetail extends React.Component {
     })
   }
 
+  _getEventPrice(){
+    return this.state.event.price
+  }
+
+  _finalize(){
+    let price = this.state.event.price
+    paymentRequest_do(this._getEventPrice(price)).then((responseJson) => {
+      Linking.openURL(responseJson.mobile_url) // open lydia url -> lydia app automatically open and show the request
+    })
+  }
 
   _displayEvent(){
     const event_ = this.state.event
@@ -45,9 +56,9 @@ class EventDetail extends React.Component {
           </ScrollView>
           <Separator/>
           <Button style={styles.payevent}
-            title='Pay event'
+            title='Buy your ticket now with Lydia!'
             color='rgb(0,31,65)'
-            onPress={()=>alert('You\'ve bought a ticket for this event!')}
+            onPress={()=>this._finalize()}
           />
 
         </View>

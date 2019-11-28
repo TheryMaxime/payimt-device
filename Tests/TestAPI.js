@@ -1,9 +1,9 @@
 // Components/testAPI.js
 import React from 'react'
 import md5 from 'js-md5'
-import { Text, View, Button, StyleSheet, TextInput } from 'react-native'
-import {paymentRequest_do, registerFromAPI, isregisterFromAPI, buildSignature, loginFromAPI, testVendorToken, createFakeAccount} from '../API/LydiaAPI'
-
+import { Text, View, Button, StyleSheet, TextInput, Linking } from 'react-native'
+import {paymentToCashierFromAPI, getListTransactionsFromAPI, getB2CbalanceFromAPI, removeCashierFromAPI, getPermissionsFromAPI, paymentRequest_do, registerFromAPI, isregisterFromAPI, buildSignature, loginFromAPI, testVendorToken, createFakeAccount} from '../API/LydiaAPI'
+import {tryHiboutikAPI} from '../API/HiboutikAPI'
 
 const isRegisteredMsg = 'You\'re registered'
 const isNotRegisteredMsg = 'You\'re not registered'
@@ -15,7 +15,6 @@ class TestAPI extends React.Component {
     this.phoneInput = React.createRef()
     this.phoneText = ""
     this.state={
-      isRegistered:0
     }
   }
 
@@ -42,8 +41,13 @@ class TestAPI extends React.Component {
       }
   }*/
 
+
   _showInformationsFromAPI() {
-      paymentRequest_do().then((responseJson) => {console.log(responseJson)})
+      tryHiboutikAPI().then((responseJson) => {
+        console.log(responseJson)
+      })
+
+
     /*  isregisterFromAPI()
         .then((responseJson) => {
           console.log(responseJson);
@@ -59,7 +63,7 @@ class TestAPI extends React.Component {
           }
         })
         .catch((error) => console.error(error))*/
-    }
+  }
 
   _phoneTextInputChanged(phone) {
         this.phoneText = phone
@@ -75,7 +79,6 @@ class TestAPI extends React.Component {
             onChangeText={(phone) => this._phoneTextInputChanged(phone)}
         />
         <Button title='Test' onPress={()=>this._showInformationsFromAPI()}/>
-        <Text>{this.state.isRegistered == 1 ? isRegisteredMsg : isNotRegisteredMsg}</Text>
       </View>
     )
   }
