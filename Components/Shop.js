@@ -4,7 +4,8 @@ import React from 'react'
 import { StyleSheet, Button, View, SafeAreaView, ActivityIndicator, ImageBackground, Image, Dimensions, StatusBar, Text, Platform, FlatList } from 'react-native'
 import { connect } from 'react-redux'
 import ShopItem from './ShopItem'
-import { getShopList } from '../API/ServerAPI'
+import { getShopList, requestPayment } from '../API/ServerAPI'
+import data from '../Helpers/shopItemsData'
 
 class Shop extends React.Component {
 
@@ -18,12 +19,18 @@ class Shop extends React.Component {
 
   _loadItems = () => {
     this.setState({isLoading: true})
+    /*
     getShopList().then(data => {
       console.log(data.data)
       this.setState({
         shopItems: [...this.state.shopItems, ...data.data],
         isLoading: false
       })
+    })
+    */
+    this.setState({
+      shopItems: [...this.state.shopItems, ...data],
+      isLoading: false
     })
   }
 
@@ -54,7 +61,8 @@ class Shop extends React.Component {
   }
 
   _pay = () => {
-    this.props.navigation.navigate("ShopDetail", { cart: this.props.cart })
+    //this.props.navigation.navigate("ShopDetail", { cart: this.props.cart })
+    requestPayment(this.props.cart, "phoneNumber");
   }
 
   renderSeparator = () => {
