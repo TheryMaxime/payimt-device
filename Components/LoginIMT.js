@@ -1,75 +1,93 @@
 // Components/LoginIMT.js
 
 import React from 'react'
-import {View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox } from 'react-native'
-//import SafeAreaView from 'react-native-safe-area-view'
+import {View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, ImageBackground} from 'react-native'
+import {connect} from 'react-redux'
 
 function Separator() {
   return <View style={styles.separator} />
 }
 
+
 class LoginIMT extends React.Component {
 
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
+    this.firstname = ""
+    this.lastname = ""
+    this.phoneNumber = ""
+  }
 
-    this.state={
-      stayConnected:false
+  _signIn = () => {
+    console.log(this.phoneNumber)
+    const action = {
+      type: "SIGN_UP",
+      value: {
+        firstname: this.firstname,
+        lastname: this.lastname,
+        phoneNumber: this.phoneNumber
+      }
     }
+    this.props.dispatch(action)
+    this.props.navigation.navigate('App')
   }
 
-  _changeCheckBoxValue(){
-    this.setState({
-      stayConnected: !this.state.stayConnected
-    })
+  _firstnameTextInputChanged(text) {
+    this.firstname = text
   }
 
-  _loginIMT(){
-    alert('You\'re logged')
+  _lastnameTextInputChanged(text) {
+    this.lastname = text
   }
+
+  _phoneTextInputChanged(text) {
+    this.phoneNumber = text
+  }
+
 
   render(){
     return(
       <View style={styles.main_container}>
-        <Image
-          style={styles.image}
-          source={require('../assets/imt_theme.png')}
-        />
-        <View style={styles.login}>
-          <View style={styles.login2}>
+        <ImageBackground
+        source={require('../assets/imt_theme_opacity060.png')}
+        style={styles.imagebackground}>
+
+          <View style={styles.login}>
             <Text style={styles.welcometext}>Welcome to Pay'IMT</Text>
             <Separator/>
+
             <TextInput
-                style={styles.textinput}
-                placeholder=' Username'
+            style={styles.textinput}
+            placeholder=' First name'
+            onChangeText={(text) => this._firstnameTextInputChanged(text)}
             />
             <Separator/>
             <TextInput
-                secureTextEntry={true}
-                style={styles.textinput}
-                placeholder=' Password'
+            style={styles.textinput}
+            placeholder=' Last name'
+            onChangeText={(text) => this._lastnameTextInputChanged(text)}
             />
+            <Separator/>
+            <TextInput
+            style={styles.textinput}
+            placeholder=' Phone number'
+            keyboardType='phone-pad'
+            onChangeText={(text) => this._phoneTextInputChanged(text)}
+            />
+
+            <Separator/>
+
+            <Button
+            title ='Login'
+            width = '300'
+            height = '45'
+            color = 'rgb(0,31,65)'
+            onPress={() => this._signIn()}/>
+
             <Separator/>
           </View>
 
-          <View style={styles.checkbox_view}>
-            <CheckBox style={styles.checkboxstyle}
-              value={this.state.stayConnected}
-              onChange = {() => this._changeCheckBoxValue()}
-              title='Stay connected'
-              checkedColor='red'
-            />
-            <Text style={styles.checkbox_text}>Stay connected</Text>
-          </View>
-
-          <Separator/>
-          <Button
-          title ='Login'
-          width = '300'
-          height = '45'
-          color = 'rgb(0,31,65)'
-          onPress={()=>this._loginIMT()}/>
-        </View>
+        </ImageBackground>
       </View>
     )
   }
@@ -80,17 +98,16 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection: 'row',
   },
-  image: {
-    width:Dimensions.get('window').width,
-    resizeMode:"stretch",
-    opacity: 0.7
+  imagebackground:{
+    width: '100%',
+    height: '100%',
+    alignItems:'center',
   },
   login:{
+    marginTop:20,
     flex:1,
-    width:335,
+    width:'90%',
     position:'absolute',
-    marginTop:300,
-    marginLeft:(Dimensions.get('window').width-335)/2,
     justifyContent:'center',
     //backgroundColor:'red'
   },
@@ -103,11 +120,12 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   welcometext:{
-    fontSize:30,
+    fontSize:40,
+    fontWeight:'bold',
     color:'rgb(0,31,65)',
   },
   textinput: {
-    width: 320,
+    width:'100%',
     height:45,
     fontSize:20,
     borderBottomWidth: 4,
@@ -131,4 +149,11 @@ const styles = StyleSheet.create({
     marginTop:20
   }
 })
-export default LoginIMT
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch: (action) => { dispatch(action) }
+  }
+}
+
+export default connect(mapDispatchToProps)(LoginIMT)

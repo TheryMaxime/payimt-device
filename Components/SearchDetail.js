@@ -43,20 +43,18 @@ class SearchDetail extends React.Component {
     if(contact != undefined){
       return(
         <View style={styles.contactdetail}>
-          <View style={styles.contacttextview}>
-            <Text style={styles.contacttext}>{contact.firstName} {contact.lastName}</Text>
-          </View>
-
-          <View style={styles.amountview}>
-            <TextInput
-              style={styles.amountinputtext}
-              placeholder='Ex: 5,2 €'
-              ref= {this.searchInput}
-              onChangeText={(text) => this._amountTextInputChanged(text)}
-              keyboardType='number-pad'
-            />
-          </View>
-
+          <Text style={styles.contacttext}>{contact.firstName} {contact.lastName}</Text>
+          <Separator/>
+          <TextInput
+            style={styles.amountinputtext}
+            placeholder='Ex: 5,2 €'
+            placeholderTextColor='rgba(0,31,65,0.4)'
+            placeholderStyle={{fontStyle:'italic'}}
+            ref= {this.searchInput}
+            onChangeText={(text) => this._amountTextInputChanged(text)}
+            keyboardType='number-pad'
+          />
+          <Separator/>
           <View style={styles.buttonsview}>
             <Button style={styles.askamount}
               title='Ask amount'
@@ -100,28 +98,45 @@ const styles = StyleSheet.create({
     alignItems:'center',
   },
   contactdetail:{
+    width:'90%',
     alignItems:'center'
   },
-  contacttextview:{
-    width:340,
-    height:50
-  },
   contacttext:{
-    fontSize:20,
+    fontSize:40,
     fontWeight:'bold',
-    color:'rgb(0,31,65)'
+    color:'rgb(0,31,65)',
+    textAlign:'center'
   },
   amountview:{
-
+    width:'90%',
+    borderWidth:3,
+    borderRadius:10,
+    borderColor:'rgb(0,31,65)'
   },
   buttonsview:{
-    flexDirection:'row'
+    flexDirection:'row',
+    width:'70%',
+    justifyContent:'space-between'
   },
   askamount:{
     flex:1,
+    width:'95%'
   },
   payamount:{
     flex:1,
+    width:'95%'
+  },
+  amountinputtext:{
+    width:'70%',
+    height:'50%',
+    borderWidth:3,
+    borderRadius:10,
+    borderColor:'rgb(0,31,65)',
+    fontSize:60,
+    textAlign:'center'
+  },
+  separator:{
+    marginTop:30
   }
 
 })

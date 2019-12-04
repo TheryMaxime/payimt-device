@@ -5,7 +5,7 @@ export default data = [
       id:1,
       name:'Soirée BDE',
       date:'10/11/12',
-      price:"3 €",
+      price:3,
       club:"BDE",
       description:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
    },
@@ -13,15 +13,15 @@ export default data = [
       id:2,
       name:'Afterwork',
       date:'10/11/12',
-      price:"free",
+      price:0.5,
       club:"Bar",
-      description:"bbbbbbbbbbbbbbbbbbbbbbbb"
+      description:"bbbbbbbbbbbbbbb"
    },
    {
       id:3,
       name:'Michel',
       date:'10/11/12',
-      price:"5,6 €",
+      price:2,
       club:"paid",
       description:"ccccccccccccccccccccccccccccccc"
    },
@@ -31,6 +31,7 @@ export default data = [
       date:'10/11/12',
       price:"10 €",
       club:"stolen",
+      description:""
    },
    {
       id:5,
@@ -38,6 +39,7 @@ export default data = [
       date:'10/11/12',
       price:"10 €",
       club:"stolen",
+      description:""
    },
    {
       id:6,
@@ -45,6 +47,7 @@ export default data = [
       date:'10/11/12',
       price:"10 €",
       club:"stolen",
+      description:""
    },
    {
       id:7,
@@ -52,5 +55,6 @@ export default data = [
       date:'10/11/12',
       price:"10 €",
       club:"stolen",
+      description:""
    }
 ]

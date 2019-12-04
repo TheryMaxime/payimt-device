@@ -170,7 +170,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    cart: state.cart
+    cart: state.cart.cart,
+    user: state.user
   }
 }
 
