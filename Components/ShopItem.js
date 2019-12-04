@@ -7,11 +7,11 @@ import { connect } from 'react-redux'
 class ShopItem extends React.Component {
 
   _getAmount() {
-    let itemIndex = this.props.cart.findIndex(item => item.id === this.props.item.id)
+    let itemIndex = this.props.cart.findIndex(item => item.product_id === this.props.item.product_id)
     if (itemIndex !== -1) {
       let count = 0
       this.props.cart.forEach(item => {
-        if (item.id === this.props.item.id) {
+        if (item.product_id === this.props.item.product_id) {
           count++
         }
       })
@@ -31,8 +31,8 @@ class ShopItem extends React.Component {
         />
         <View style={styles.content_container}>
           <View style={styles.header_container}>
-            <Text style={styles.title_text}>{item.title}</Text>
-            <Text style={styles.price_text}>{item.price} euro</Text>
+            <Text style={styles.title_text}>{item.product_model}</Text>
+            <Text style={styles.price_text}>{item.product_price} euro</Text>
           </View>
           <View style={styles.interaction_container}>
             <TouchableOpacity
