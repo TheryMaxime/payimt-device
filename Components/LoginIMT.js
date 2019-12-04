@@ -3,8 +3,6 @@
 import React from 'react'
 import {View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, ImageBackground} from 'react-native'
 import {connect} from 'react-redux'
-import UserSignInForm from './Forms/UserSignInForm'
-import store from '../Store/configureStore'
 
 function Separator() {
   return <View style={styles.separator} />
@@ -15,34 +13,79 @@ class LoginIMT extends React.Component {
 
   constructor(props){
     super(props)
+    this.firstname = ""
+    this.lastname = ""
+    this.phoneNumber = ""
   }
 
   _signIn = () => {
-    const state = store.getState()
-    console.log(state) // !!!!!!!!!!!!!!!!!!! FONCTIONNE ICI !!!!!!!!!!!!!!!!!!!!!!!!
-    //console.log(state.form.user.values.firstname)
-    this.props.navigation.navigate('App', {
-      firstname: state.form.user.values.firstname,
-      lastname: state.form.user.values.lastname,
-      phone: state.form.user.values.phone
-    })
+    console.log(this.phoneNumber)
+    const action = {
+      type: "SIGN_UP",
+      value: {
+        firstname: this.firstname,
+        lastname: this.lastname,
+        phoneNumber: this.phoneNumber
+      }
+    }
+    this.props.dispatch(action)
+    this.props.navigation.navigate('App')
+  }
+
+  _firstnameTextInputChanged(text) {
+    this.firstname = text
+  }
+
+  _lastnameTextInputChanged(text) {
+    this.lastname = text
+  }
+
+  _phoneTextInputChanged(text) {
+    this.phoneNumber = text
   }
 
 
   render(){
     return(
       <View style={styles.main_container}>
-      <ImageBackground
+        <ImageBackground
         source={require('../assets/imt_theme_opacity060.png')}
         style={styles.imagebackground}>
 
-        <View style={styles.login}>
+          <View style={styles.login}>
+            <Text style={styles.welcometext}>Welcome to Pay'IMT</Text>
+            <Separator/>
 
+            <TextInput
+            style={styles.textinput}
+            placeholder=' First name'
+            onChangeText={(text) => this._firstnameTextInputChanged(text)}
+            />
+            <Separator/>
+            <TextInput
+            style={styles.textinput}
+            placeholder=' Last name'
+            onChangeText={(text) => this._lastnameTextInputChanged(text)}
+            />
+            <Separator/>
+            <TextInput
+            style={styles.textinput}
+            placeholder=' Phone number'
+            keyboardType='phone-pad'
+            onChangeText={(text) => this._phoneTextInputChanged(text)}
+            />
 
-            <UserSignInForm  handleSubmit={this._signIn}/>
+            <Separator/>
 
+            <Button
+            title ='Login'
+            width = '300'
+            height = '45'
+            color = 'rgb(0,31,65)'
+            onPress={() => this._signIn()}/>
 
-        </View>
+            <Separator/>
+          </View>
 
         </ImageBackground>
       </View>
@@ -107,18 +150,10 @@ const styles = StyleSheet.create({
   }
 })
 
-/*const mapStateToProps = (state) => {
-  return {
-    firstname: state.firstname,
-    lastname: state.lastname,
-    phone: state.phone
-  }
-}
-/*
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatch: (action) => { dispatch(action) }
   }
 }
-*/
-export default connect()(LoginIMT)
+
+export default connect(mapDispatchToProps)(LoginIMT)
