@@ -1,7 +1,7 @@
 //Components/TopBar.js
 
 import React from 'react'
-import { View, Text, Image, StyleSheet, TouchableOpacity, Button, AsyncStorage } from 'react-native'
+import { View, Text, Image, StyleSheet, TouchableOpacity, Button, AsyncStorage, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
 import UserSignInFormSelector from './Forms/UserSignInForm'
 import store from '../Store/configureStore'
@@ -11,10 +11,6 @@ class Settings extends React.Component {
   constructor(props){
     super(props)
   }
-
-  /*componentDidMount(){
-    this._getFirst()
-  }*/
 
 /*  _signOutAsync = async () => {
       await AsyncStorage.clear();
@@ -30,19 +26,28 @@ class Settings extends React.Component {
 */
 
   render() {
-  //  const state = store.getState();
-    console.log(this.props)
+    const state = store.getState();
+    console.log(state)
     return(
       <View>
-        <Text>Firstname : </Text>
-        <Text>Lastname : </Text>
-        <Text>Phone : </Text>
-        <Button title="Log Out" onPress={() => alert('salut')}/>
+        <ImageBackground
+          source={require('../assets/imt_theme_opacity060.png')}
+          style={styles.imagebackground}>
+            <Text>Firstname : {}</Text>
+            <Text>Lastname : {}</Text>
+            <Text>Phone : {}</Text>
+            <Button title="Log Out" onPress={() => alert('salut')}/>
+        </ImageBackground>
       </View>
     )
   }
-
 }
 
+const styles = StyleSheet.create({
+  imagebackground:{
+    width: '100%',
+    height: '100%',
+  },
+})
 
 export default connect()(Settings)

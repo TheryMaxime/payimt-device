@@ -141,10 +141,7 @@ const LoginScreen = createStackNavigator({
 
 const SettingsScreen = createStackNavigator({
   Settings: {
-    screen: Settings,
-    navigationOptions:{
-      title:'Profile'
-    }
+    screen: Settings
   }
 })
 

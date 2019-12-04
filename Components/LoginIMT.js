@@ -17,45 +17,9 @@ class LoginIMT extends React.Component {
     super(props)
   }
 
-  _changeCheckBoxValue(){
-    this.setState({
-      stayConnected: !this.state.stayConnected
-    })
-  }
-
-  _firstnameTextInputChanged(text){
-    this.setState({
-      firstname: text
-    })
-  }
-
-  _lastnameTextInputChanged(text){
-    this.setState({
-      lastname: text
-    })
-  }
-  _phoneTextInputChanged(text){
-    this.setState({
-      phone: text
-    })
-  }
-
-/*  _setState(){
-    let first = this.firstname
-    let last = this.lastname
-    let phone = this.phone
-    this.setState({
-      firstname: first,
-      lastname: last,
-      phone: phone
-    })
-    console.log(this.state);
-  }*/
-
-
   _signIn = () => {
     const state = store.getState()
-    console.log(state)
+    console.log(state) // !!!!!!!!!!!!!!!!!!! FONCTIONNE ICI !!!!!!!!!!!!!!!!!!!!!!!!
     //console.log(state.form.user.values.firstname)
     this.props.navigation.navigate('App', {
       firstname: state.form.user.values.firstname,
@@ -66,8 +30,6 @@ class LoginIMT extends React.Component {
 
 
   render(){
-  //  console.log(this.props);
-    //const {isAuthenticated} = this.props.auth
     return(
       <View style={styles.main_container}>
       <ImageBackground
