@@ -5,10 +5,19 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 
 class TopBar extends React.Component {
 
+  _show(){
+    console.log(this.props);
+  }
+
   render() {
     const { title } = this.props
     return(
       <View style={styles.main_container}>
+        <View style={styles.title_container}>
+          <Text style={styles.text}>
+            {title}
+          </Text>
+        </View>
         <View style={styles.logo_container}>
           <Image
             style={styles.image}
@@ -16,18 +25,6 @@ class TopBar extends React.Component {
             resizeMode='contain'
           />
         </View>
-        <View style={styles.title_container}>
-          <Text style={styles.text}>
-            {title}
-          </Text>
-        </View>
-        <TouchableOpacity style={styles.logo_container}>
-          <Image
-            source={require('../assets/user.png')}
-            style={styles.image}
-            resizeMode='contain'
-          />
-        </TouchableOpacity>
       </View>
     )
   }
@@ -41,16 +38,19 @@ const styles = StyleSheet.create({
   },
   logo_container: {
     flex:1,
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent:'center'
   },
   title_container: {
-    flex:4
+    flex:4,
+    justifyContent:'center'
   },
   text: {
+    marginLeft:15,
     fontSize: 30,
     fontWeight:'bold',
     color: 'rgb(0,31,65)',
-    textAlign:'center',
+    //textAlign:'center',
   },
   image: {
     width: '80%',

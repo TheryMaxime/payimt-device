@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { StyleSheet, Image } from 'react-native'
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import Search from '../Components/Search'
@@ -13,6 +13,9 @@ import ShopDetail from '../Components/ShopDetail'
 import Event from '../Components/Event'
 import EventDetail from '../Components/EventDetail'
 import TopBar from '../Components/TopBar'
+import LoginIMT from '../Components/LoginIMT'
+import Settings from '../Components/Settings'
+import AuthLoadingScreen from '../Components/AuthLoadingScreen'
 
 const SearchStackNavigator = createStackNavigator({
   Search: {
@@ -61,18 +64,16 @@ const HomeStackNavigator = createStackNavigator({
   }
 })
 
+const SettingStackNavigator = createStackNavigator({
+  Settings:{
+    screen: Settings,
+    navigationOptions:{
+      headerTitle: () => <TopBar title="Settings"/>
+    }
+  }
+})
 
 const PayIMTNavigator = createBottomTabNavigator({
- Home: {
-    screen: HomeStackNavigator,
-    navigationOptions: {
-      tabBarIcon: () => {
-        return <Image
-        source={require('../Images/ic_home.png')}
-        style={styles.icon}/>
-      }
-    }
-  },
   Search: {
     screen: SearchStackNavigator,
     navigationOptions: {
@@ -102,8 +103,19 @@ const PayIMTNavigator = createBottomTabNavigator({
         style={styles.icon}/>
       }
     }
-  }
+  },
+  Settings: {
+     screen: SettingStackNavigator,
+     navigationOptions: {
+       tabBarIcon: () => {
+         return <Image
+         source={require('../Images/ic_home.png')}
+         style={styles.icon}/>
+       }
+     }
+   },
 },
+
 {
   tabBarOptions: {
     activeBackgroundColor: '#DDDDDD',
@@ -121,4 +133,28 @@ const styles = StyleSheet.create({
   }
 })
 
-export default createAppContainer(PayIMTNavigator)
+const LoginScreen = createStackNavigator({
+  LoginIMT: {
+    screen: LoginIMT
+  }
+})
+
+const SettingsScreen = createStackNavigator({
+  Settings: {
+    screen: Settings,
+    navigationOptions:{
+      title:'Profile'
+    }
+  }
+})
+
+export default createAppContainer(
+  createSwitchNavigator({
+    AuthLoading: AuthLoadingScreen,
+    App: PayIMTNavigator,
+    Auth: LoginScreen,
+  },
+  {
+    initialRouteName: 'AuthLoading',
+  })
+)
