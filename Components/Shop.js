@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import ShopItem from './ShopItem'
 import { getShopList, requestPayment } from '../API/ServerAPI'
 import data from '../Helpers/shopItemsData'
+import AppLink from 'react-native-app-link'
 
 class Shop extends React.Component {
 
@@ -19,19 +20,22 @@ class Shop extends React.Component {
 
   _loadItems = () => {
     this.setState({isLoading: true})
-    /*
+
     getShopList().then(data => {
-      console.log(data.data)
       this.setState({
         shopItems: [...this.state.shopItems, ...data.data],
         isLoading: false
       })
+    }).catch(error => {
+      console.log(error)
     })
-    */
+
+    /*
     this.setState({
       shopItems: [...this.state.shopItems, ...data],
       isLoading: false
     })
+    */
   }
 
   _displayLoading() {
@@ -61,8 +65,23 @@ class Shop extends React.Component {
   }
 
   _pay = () => {
-    //this.props.navigation.navigate("ShopDetail", { cart: this.props.cart })
-    requestPayment(this.props.cart, "phoneNumber");
+
+    const config = {
+      appName: "Lydia",
+      appStoreId: "575913704",
+      appStoreLocale: "fr",
+      playStoreId: "com.lydia"
+    }
+
+    requestPayment(this.props.cart, "+33633739225")
+      .then((response) => {
+        AppLink.maybeOpenURL(response.mobile_url, config)
+        .catch( (err) => {
+          console.log(err)
+        })
+      })
+      .catch((error) => { console.log(error) })
+
   }
 
   renderSeparator = () => {
@@ -92,7 +111,7 @@ class Shop extends React.Component {
                 data={this.state.shopItems}
                 extraData={this.props.cart}
                 ItemSeparatorComponent={this.renderSeparator}
-                keyExtractor={(item) => item.id.toString()}
+                keyExtractor={(item) => item.product_id.toString()}
                 renderItem={({item}) =>
                   <ShopItem
                     item={item}

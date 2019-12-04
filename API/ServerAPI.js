@@ -10,8 +10,7 @@ export function getShopList() {
     },
   })
     .then((response) => {
-      console.log(response.json())
-      //return response.json()
+      return response.json()
     })
     .catch((error) => console.error(error))
 }

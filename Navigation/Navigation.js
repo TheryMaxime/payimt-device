@@ -9,7 +9,6 @@ import Search from '../Components/Search'
 import SearchDetail from '../Components/SearchDetail'
 import Home from '../Components/Home'
 import Shop from '../Components/Shop'
-import ShopDetail from '../Components/ShopDetail'
 import Event from '../Components/Event'
 import EventDetail from '../Components/EventDetail'
 import TopBar from '../Components/TopBar'
@@ -46,9 +45,6 @@ const ShopStackNavigator = createStackNavigator({
     navigationOptions: {
       headerTitle: () => <TopBar title="Shop"/>
     }
-  },
-  ShopDetail: {
-    screen: ShopDetail
   }
 })
 
