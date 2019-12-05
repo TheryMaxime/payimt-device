@@ -15,6 +15,7 @@ import TopBar from '../Components/TopBar'
 import LoginIMT from '../Components/LoginIMT'
 import Settings from '../Components/Settings'
 import AuthLoadingScreen from '../Components/AuthLoadingScreen'
+import AppLauncherLogo from '../Components/AppLauncherLogo'
 
 const SearchStackNavigator = createStackNavigator({
   Search: {
@@ -146,13 +147,23 @@ const SettingsScreen = createStackNavigator({
   }
 })
 
+const launcherStack = createStackNavigator ({
+    Logo: {
+        screen: AppLauncherLogo,
+        navigationOptions: {
+            header: null,
+        },
+    },
+})
+
 export default createAppContainer(
   createSwitchNavigator({
     AuthLoading: AuthLoadingScreen,
     App: PayIMTNavigator,
     Auth: LoginScreen,
+    Logo: launcherStack
   },
   {
-    initialRouteName: 'AuthLoading',
+    initialRouteName: 'Logo',
   })
 )
