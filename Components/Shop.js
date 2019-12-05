@@ -73,7 +73,7 @@ class Shop extends React.Component {
       playStoreId: "com.lydia"
     }
 
-    requestPayment(this.props.cart, "+33633739225")
+    requestPayment(this.props.cart, "0633739225")
       .then((response) => {
         AppLink.maybeOpenURL(response.mobile_url, config)
         .catch( (err) => {

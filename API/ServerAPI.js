@@ -18,10 +18,6 @@ export function getShopList() {
 export function requestPayment(cart, phoneNumber) {
   const url = URL_SERVER + "/cafeteria"
 
-  let formData = new FormData()
-  formData.append('cart', cart)
-  formData.append('phoneNumber', phoneNumber)
-
   return fetch(url, {
     method: 'POST',
     headers: {
@@ -31,6 +27,27 @@ export function requestPayment(cart, phoneNumber) {
     body: JSON.stringify({
       "cart" : cart,
       "phoneNumber" : phoneNumber
+    })
+  })
+    .then((response) => {
+      return response.json()
+    })
+    .catch((error) => console.error(error))
+}
+
+export function login(phoneNumber, firstname, lastname) {
+  const url = URL_SERVER + "/login"
+
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      'Accept':'application/json',
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+      "phoneNumber" : phoneNumber,
+      "firstname" : firstname,
+      "lastname" : lastname
     })
   })
     .then((response) => {
