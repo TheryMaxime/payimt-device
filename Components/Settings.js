@@ -12,31 +12,31 @@ class Settings extends React.Component {
     super(props)
   }
 
-/*  _signOutAsync = async () => {
-      await AsyncStorage.clear();
-      this.props.navigation.navigate('Auth');
-    };
-
-  async _getFirst(){
-    const firstname = await AsyncStorage.getItem('firstname')
-    this.setState({
-      firstname: firstname
-    })
+  _logOut = () => {
+    const action = {
+      type: "LOG_OUT",
+      value: {
+        firstname: this.props.firstname,
+        lastname: this.props.lastname,
+        phoneNumber: this.props.phoneNumber,
+        isLoggedIn:this.props.isLoggedIn
+      }
+    }
+    this.props.dispatch(action)
+    this.props.navigation.navigate('Auth')
   }
-*/
 
   render() {
-    const state = store.getState();
-    console.log(state)
+    const user = this.props.user
     return(
       <View>
         <ImageBackground
           source={require('../assets/imt_theme_opacity060.png')}
           style={styles.imagebackground}>
-            <Text>Firstname : {}</Text>
-            <Text>Lastname : {}</Text>
-            <Text>Phone : {}</Text>
-            <Button title="Log Out" onPress={() => alert('salut')}/>
+            <Text>Firstname : {user.firstname}</Text>
+            <Text>Lastname : {user.lastname}</Text>
+            <Text>Phone : {user.phoneNumber}</Text>
+            <Button title="Log Out" onPress={this._logOut}/>
         </ImageBackground>
       </View>
     )
@@ -50,4 +50,17 @@ const styles = StyleSheet.create({
   },
 })
 
-export default connect()(Settings)
+const mapStateToProps = (state) => {
+  return {
+    //cart: state.cart.cart,
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch: (action) => { dispatch(action) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Settings)

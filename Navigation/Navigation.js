@@ -20,7 +20,7 @@ const SearchStackNavigator = createStackNavigator({
   Search: {
     screen: Search,
     navigationOptions: {
-      headerTitle: () => <TopBar title="Recherche"/>
+      headerTitle: () => <TopBar title="Contacts"/>
     }
   },
   SearchDetail: {
@@ -32,15 +32,13 @@ const EventStackNavigator = createStackNavigator({
   Event: {
     screen: Event,
     navigationOptions: {
-      headerTitle: () => <TopBar title="Événements"/>
+      headerTitle: () => <TopBar title="Events"/>
     }
   },
   EventDetail: {
     screen: EventDetail
   }
 })
-
-
 
 const ShopStackNavigator = createStackNavigator({
   Shop: {
@@ -64,28 +62,38 @@ const SettingStackNavigator = createStackNavigator({
   Settings:{
     screen: Settings,
     navigationOptions:{
-      headerTitle: () => <TopBar title="Settings"/>
+      headerTitle: () => <TopBar title="Home"/>
     }
   }
 })
 
 const PayIMTNavigator = createBottomTabNavigator({
+  Settings: {
+     screen: SettingStackNavigator,
+     navigationOptions: {
+       tabBarIcon: () => {
+         return <Image
+         source={require('../Images/ic_home.png')}
+         style={styles.icon}/>
+       }
+     }
+  },
+  Shop: {
+     screen: ShopStackNavigator,
+     navigationOptions: {
+       tabBarIcon: () => {
+         return <Image
+         source={require('../Images/ic_shop.png')}
+         style={styles.icon}/>
+       }
+     }
+  },
   Search: {
     screen: SearchStackNavigator,
     navigationOptions: {
       tabBarIcon: () => {
         return <Image
-        source={require('../Images/ic_search.png')}
-        style={styles.icon}/>
-      }
-    }
-  },
- Shop: {
-    screen: ShopStackNavigator,
-    navigationOptions: {
-      tabBarIcon: () => {
-        return <Image
-        source={require('../Images/ic_shop.png')}
+        source={require('../Images/ic_contacts.png')}
         style={styles.icon}/>
       }
     }
@@ -97,19 +105,12 @@ const PayIMTNavigator = createBottomTabNavigator({
         return <Image
         source={require('../Images/ic_event.png')}
         style={styles.icon}/>
-      }
+      },
+    },
+    tabBarOptions:{
+      hidden:true
     }
   },
-  Settings: {
-     screen: SettingStackNavigator,
-     navigationOptions: {
-       tabBarIcon: () => {
-         return <Image
-         source={require('../Images/ic_home.png')}
-         style={styles.icon}/>
-       }
-     }
-   },
 },
 
 {
@@ -131,8 +132,12 @@ const styles = StyleSheet.create({
 
 const LoginScreen = createStackNavigator({
   LoginIMT: {
-    screen: LoginIMT
+    screen: LoginIMT,
+    navigationOptions:{
+      headerTitle: () => <TopBar title="Login"/>
+    }
   }
+
 })
 
 const SettingsScreen = createStackNavigator({

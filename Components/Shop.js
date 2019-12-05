@@ -73,7 +73,9 @@ class Shop extends React.Component {
       playStoreId: "com.lydia"
     }
 
-    requestPayment(this.props.cart, "+33633739225")
+    const phoneNumber = this.props.user.phoneNumber
+
+    requestPayment(this.props.cart, "+33767533917") //à rempplacer par phoneNumber
       .then((response) => {
         AppLink.maybeOpenURL(response.mobile_url, config)
         .catch( (err) => {
@@ -102,6 +104,7 @@ class Shop extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return(
       <View style={styles.main_container}>
         <ImageBackground source={require('../assets/imt_theme_opacity060.png')} style={styles.imagebackground}>

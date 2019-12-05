@@ -1,16 +1,19 @@
 import React from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, View, AsyncStorage } from 'react-native';
+import {store} from '../Store/configureStore'
 
 class AuthLoadingScreen extends React.Component {
 
   componentDidMount() {
-    this._bootstrapAsync();
+    this._bootstrap();
   }
 
-  _bootstrapAsync = async () => {
-    //const isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
-    //this.props.navigation.navigate(isLoggedIn ? 'App', 'Auth')
-    this.props.navigation.navigate('Auth');
+  _bootstrap(){
+
+    const state = store.getState();
+    console.log(state);
+    this.props.navigation.navigate(state.user.isLoggedIn ? 'App' : 'Auth')
+    //this.props.navigation.navigate('Auth')
   };
 
   render() {

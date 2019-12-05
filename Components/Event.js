@@ -9,6 +9,35 @@ function Separator() {
   return <View style={styles.separator} />
 }
 
+//function to use for replacing the "work in progress" text by the Event component render
+
+function EventRender(){
+  return(
+    <View>
+    <Text style={styles.searchevent}>Search an event by name or club:</Text>
+    <View style={styles.searchview}>
+      <TextInput
+          style={styles.textinput}
+          ref= {this.searchInput}
+          placeholder=' example : BDE, Afterwork...'
+          //onChangeText={(text) => this._searchTextInputChanged(text)}
+          onChangeText={text => this.searchFilterFunction(text)}
+          clearButtonMode='always'
+      />
+    </View>
+
+    <View style={styles.flatlistview}>
+      <FlatList
+        style={styles.flatlist}
+        data={this.state.data}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({item}) => <EventItem event={item} displayDetailForEvent={this._displayDetailForEvent}/>}
+      />
+    </View>
+    </View>
+  )
+}
+
 class Event extends React.Component {
 
   constructor(props){
@@ -52,27 +81,8 @@ class Event extends React.Component {
           source={require('../assets/imt_theme_opacity060.png')}
           style={styles.imagebackground}>
 
-          <Separator/>
-          <Text style={styles.searchevent}>Search an event by name or club:</Text>
-          <View style={styles.searchview}>
-            <TextInput
-                style={styles.textinput}
-                ref= {this.searchInput}
-                placeholder=' example : BDE, Afterwork...'
-                //onChangeText={(text) => this._searchTextInputChanged(text)}
-                onChangeText={text => this.searchFilterFunction(text)}
-                clearButtonMode='always'
-            />
-          </View>
-
-          <View style={styles.flatlistview}>
-            <FlatList
-              style={styles.flatlist}
-              data={this.state.data}
-              keyExtractor={(item) => item.id.toString()}
-              renderItem={({item}) => <EventItem event={item} displayDetailForEvent={this._displayDetailForEvent}/>}
-            />
-          </View>
+          <Text style={{fontSize:25, color:'rgb(0,31,65)'}}>Work in progress!</Text>
+          <Text style={{fontSize:25, color:'rgb(0,31,65)'}}>Event page coming soon..</Text>
         </ImageBackground>
       </View>
     )
