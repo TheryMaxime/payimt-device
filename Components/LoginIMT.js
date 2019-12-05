@@ -3,6 +3,7 @@
 import React from 'react'
 import {View, Text, Image, TextInput, Button, StyleSheet, ImageBackground} from 'react-native'
 import {connect} from 'react-redux'
+import { login } from '../API/ServerAPI'
 
 function Separator() {
   return <View style={styles.separator} />
@@ -71,6 +72,10 @@ class LoginIMT extends React.Component {
     if( this.firstname.length > 0 && this.state.firstnameValidate==true
         && this.lastname.length > 0 && this.state.lastnameValidate==true
           && this.phoneNumber.length == 10 && this.phoneNumber[0] == 0 && this.state.phoneValidate==true){
+          login(this.phoneNumber, this.firstname, this.lastname)
+            .then((response) => {
+              console.log(response)
+            })
             const action = {
               type: "SIGN_UP",
               value: {

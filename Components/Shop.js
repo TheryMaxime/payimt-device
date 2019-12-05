@@ -75,7 +75,7 @@ class Shop extends React.Component {
 
     const phoneNumber = this.props.user.phoneNumber
 
-    requestPayment(this.props.cart, "+33767533917") //à rempplacer par phoneNumber
+    requestPayment(this.props.cart, phoneNumber) //à rempplacer par phoneNumber
       .then((response) => {
         AppLink.maybeOpenURL(response.mobile_url, config)
         .catch( (err) => {
