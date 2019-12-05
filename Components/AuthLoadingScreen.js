@@ -9,11 +9,11 @@ class AuthLoadingScreen extends React.Component {
   }
 
   _bootstrap(){
-
     const state = store.getState();
-    console.log(state);
+    if(state.user.isLoggedIn){
+      alert('Welcome back on Pay\'IMT, '+state.user.firstname+' !')
+    }
     this.props.navigation.navigate(state.user.isLoggedIn ? 'App' : 'Auth')
-    //this.props.navigation.navigate('Auth')
   };
 
   render() {

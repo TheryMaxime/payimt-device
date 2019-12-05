@@ -74,7 +74,14 @@ class LoginIMT extends React.Component {
           && this.phoneNumber.length == 10 && this.phoneNumber[0] == 0 && this.state.phoneValidate==true){
           login(this.phoneNumber, this.firstname, this.lastname)
             .then((response) => {
-              console.log(response)
+              if(response.customer_registered == true){
+                alert('Vous venez de vous enregistrer dans notre base de clientèle! Bienvenue sur Pay\'IMT !')
+              }else if(response.customer_modified==true){
+                alert('Vous venez de modifier votre nom et prenom dans notre base de clientèle, vous apparaissez maintenant comme: '+this.firstname+' '+this.lastname)
+              }else if (response.customer_existed == true){
+                alert('Bonjour ' + this.firstname + '! Bienvenue sur Pay\'IMT')
+              }else {
+                alert('Vous n\'existez pas sur notre base de clientèle.')}
             })
             const action = {
               type: "SIGN_UP",
@@ -104,6 +111,7 @@ class LoginIMT extends React.Component {
 
           <View style={styles.login}>
             <Text style={styles.welcometext}>Welcome to Pay'IMT</Text>
+            <Text style={styles.welcometext2}>Please enter your informations below</Text>
             <Separator/>
 
             <TextInput
@@ -130,8 +138,9 @@ class LoginIMT extends React.Component {
             onChangeText={(text) => this._validate(text, 'phoneNumber')}
             ref={this.phoneInput}
             />
+            <Text style={{textAlign:'center',fontStyle:'italic', color:'gray'}}>If you already have a Lydia account, you can provide the phone number associated with it.</Text>
 
-            <Separator/>
+            <Separator/><Separator/><Separator/>
 
             <Button
             title ='Login'
@@ -176,9 +185,16 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   welcometext:{
-    fontSize:40,
+    fontSize:35,
     fontWeight:'bold',
     color:'rgb(0,31,65)',
+    textAlign:'center'
+  },
+  welcometext2:{
+    fontSize:25,
+    fontStyle:'italic',
+    color:'rgb(0,31,65)',
+    textAlign:'center'
   },
   textinputvalid: {
     width:'100%',

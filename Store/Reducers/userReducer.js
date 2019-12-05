@@ -15,20 +15,6 @@ function userReducer(state = initialState, action){
       }
       return nextState ||state
 
-    case 'SIGN_IN':
-      /*if(action.value.firstname == state.firstname
-          && action.value.lastname == state.lastname
-            && action.value.phone == state.phone
-              && state.isRegistered == true){*/
-      //console.log("salut!:",action.value.firstname);
-        nextState = {
-          ...state,
-          isLoggedIn:true,
-          isRegistered:true
-        }
-      //}
-      return nextState || state
-
     case 'LOG_OUT':
       if(state.isRegistered == true){
         nextState = {

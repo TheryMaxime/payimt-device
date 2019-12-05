@@ -80,7 +80,7 @@ class Event extends React.Component {
         <ImageBackground
           source={require('../assets/imt_theme_opacity060.png')}
           style={styles.imagebackground}>
-
+          <Separator/>
           <Text style={{fontSize:25, color:'rgb(0,31,65)'}}>Work in progress!</Text>
           <Text style={{fontSize:25, color:'rgb(0,31,65)'}}>Event page coming soon..</Text>
         </ImageBackground>
