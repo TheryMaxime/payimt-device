@@ -69,9 +69,6 @@ const styles = StyleSheet.create({
     marginBottom:2.5,
     marginLeft:5,
     marginRight:5,
-    borderWidth:1,
-    borderRadius:10,
-    borderStyle:'dotted',
   },
   image: {
     flex: 1,

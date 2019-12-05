@@ -9,6 +9,35 @@ function Separator() {
   return <View style={styles.separator} />
 }
 
+function SearchRender(){
+  return(
+    <View>
+    <View style={styles.searchview}>
+      <TextInput
+          style={styles.textinput}
+          ref= {this.searchInput}
+          placeholder=' example : Maxime THERY'
+          onChangeText={(text) => this._searchTextInputChanged(text)}
+          clearButtonMode='always'
+      />
+      <Button
+        title='Search a contact'
+        color='rgb(0,31,65)'
+        onPress={()=>this._showSearchedText()}/>
+    </View>
+
+    <View style={styles.flatlistview}>
+      <FlatList
+        style={styles.flatlist}
+        data={searchTests}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({item}) => <SearchItem contact={item} displayDetailForSearch={this._displayDetailForSearch}/>}
+      />
+    </View>
+    </View>
+  )
+}
+
 class Search extends React.Component {
 
   constructor(props){
@@ -41,28 +70,10 @@ class Search extends React.Component {
           style={styles.imagebackground}>
 
           <Separator/>
-          <View style={styles.searchview}>
-            <TextInput
-                style={styles.textinput}
-                ref= {this.searchInput}
-                placeholder=' example : Maxime THERY'
-                onChangeText={(text) => this._searchTextInputChanged(text)}
-                clearButtonMode='always'
-            />
-            <Button
-              title='Search a contact'
-              color='rgb(0,31,65)'
-              onPress={()=>this._showSearchedText()}/>
-          </View>
+          <Text style={{fontSize:25, color:'rgb(0,31,65)'}}>Work in progress!</Text>
+          <Text style={{fontSize:25, color:'rgb(0,31,65)'}}>Contact page coming soon..</Text>
 
-          <View style={styles.flatlistview}>
-            <FlatList
-              style={styles.flatlist}
-              data={searchTests}
-              keyExtractor={(item) => item.id.toString()}
-              renderItem={({item}) => <SearchItem contact={item} displayDetailForSearch={this._displayDetailForSearch}/>}
-            />
-          </View>
+
         </ImageBackground>
       </View>
     )

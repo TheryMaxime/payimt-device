@@ -73,7 +73,9 @@ class Shop extends React.Component {
       playStoreId: "com.lydia"
     }
 
-    requestPayment(this.props.cart, "0633739225")
+    const phoneNumber = this.props.user.phoneNumber
+
+    requestPayment(this.props.cart, phoneNumber) 
       .then((response) => {
         AppLink.maybeOpenURL(response.mobile_url, config)
         .catch( (err) => {
@@ -89,9 +91,10 @@ class Shop extends React.Component {
       <View
         style={{
           height: 1,
-          width: "72%",
+          width: "95%",
           backgroundColor: "rgb(0, 31, 65)",
-          marginLeft: "14%"
+          alignSelf:'center',
+          borderWidth:1
         }}
       />
     );
@@ -102,6 +105,7 @@ class Shop extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return(
       <View style={styles.main_container}>
         <ImageBackground source={require('../assets/imt_theme_opacity060.png')} style={styles.imagebackground}>
@@ -122,7 +126,7 @@ class Shop extends React.Component {
               />
             </View>
             <View style={styles.validation_container}>
-              <Button title='payer' onPress={this._pay}/>
+              <Button title='payer' color='rgb(0, 31, 65)' onPress={this._pay}/>
             </View>
             {this._displayLoading()}
           </SafeAreaView>
@@ -147,7 +151,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   list_container: {
-    marginTop:30,
+    marginTop:10,
+    marginBottom:10,
     borderWidth:3,
     borderRadius:10,
     borderColor:'rgb(0,31,65)',
@@ -155,7 +160,8 @@ const styles = StyleSheet.create({
     width: '90%'
   },
   validation_container: {
-    marginBottom: 0
+    marginBottom:10,
+    width:'90%'
   },
   loading_container: {
     position: 'absolute',
