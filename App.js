@@ -24,14 +24,11 @@ function LoadingView() {
 export default class App extends React.Component {
   render() {
     return (
-
       <Provider store={store}>
         <PersistGate loading={<LoadingView/>} persistor={pStore}>
           <Navigation/>
         </PersistGate>
       </Provider>
-
-      /*<LoginIMT/>*/
     )
   }
 }
