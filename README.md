@@ -1,7 +1,7 @@
 # payimt-device
 Ce projet consiste en la création d’une plateforme contenant un porte-monnaie virtuel pour chaque membre de l’école. L’objectif étant de faciliter les transactions entre particuliers, mais également avec les institutions que sont :  La cafétéria Le foyer Le BDE Les club évènementiels
 
-(Voir également la partie back-office : https://github.com/TheryMaxime/payimt-server)
+(Voir également la partie back-end : https://github.com/TheryMaxime/payimt-server)
 
 ## Comment lancer l'application ?
 
