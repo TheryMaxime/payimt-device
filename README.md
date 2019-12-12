@@ -16,6 +16,7 @@ puis ensuite, pour lancer le projet à l'aide d'Expo,
 
 ```bash
 cd NomDuProjet
+npm install #Installer toutes les dépendances du projet sur votre dossier local
 npm start
 ```
 Veillez à ce qu'un émulateur/simulateur soit installé et lancé sur votre machine (tuto: https://facebook.github.io/react-native/docs/getting-started)
