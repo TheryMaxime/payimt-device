@@ -8,6 +8,12 @@ import { getShopList, requestPayment } from '../API/ServerAPI'
 import data from '../Helpers/shopItemsData'
 import AppLink from 'react-native-app-link'
 
+/*
+*
+* Component correspondant à l'écran de Shop de l'application
+*
+*/
+
 class Shop extends React.Component {
 
   constructor(props) {
@@ -18,6 +24,7 @@ class Shop extends React.Component {
     }
   }
 
+  // charger les produits de Hiboutik afin de les afficher dans la flatlist
   _loadItems = () => {
     this.setState({isLoading: true})
 
@@ -38,6 +45,7 @@ class Shop extends React.Component {
     */
   }
 
+  // si il ya un temps de réponse visible à l'oeil, on fait apparaître un rond de chargement
   _displayLoading() {
     if (this.state.isLoading) {
       return (
@@ -64,6 +72,7 @@ class Shop extends React.Component {
     this.props.dispatch(action)
   }
 
+  // Procède à l'action de paiement. (Appels API vers le serveur)
   _pay = () => {
 
     const config = {
@@ -75,7 +84,7 @@ class Shop extends React.Component {
 
     const phoneNumber = this.props.user.phoneNumber
 
-    requestPayment(this.props.cart, phoneNumber) 
+    requestPayment(this.props.cart, phoneNumber)
       .then((response) => {
         AppLink.maybeOpenURL(response.mobile_url, config)
         .catch( (err) => {

@@ -10,6 +10,13 @@ function Separator() {
   return <View style={styles.separator} />
 }
 
+
+/*
+*
+* Component correspondant au détail d'un évènement. Définit la forme selon laquelle l'évènement sera présenté lorsqu'un utilisateur cliquera dessus dans la flatlist (component Event)
+*
+*/
+
 class EventDetail extends React.Component {
 
   constructor(props){
@@ -20,27 +27,19 @@ class EventDetail extends React.Component {
   }
 
   componentDidMount(){
-    /*
-    getEvent(this.props.navigation.state.params.idEvent).then(data => {
-      this.setState({
-        event: data
-      })
-    })
-    */
     this.setState({
       event: getEvent(this.props.navigation.state.params.idEvent)
     })
   }
 
+  // récupère le prix de l'évènement
   _getEventPrice(){
     return this.state.event.price
   }
 
+  // appui sur le bouton payer (voir Shop -> _pay)
   _finalize(){
-    let price = this.state.event.price
-    paymentRequest_do(this._getEventPrice(price)).then((responseJson) => {
-      Linking.openURL(responseJson.mobile_url) // open lydia url -> lydia app automatically open and show the request
-    })
+
   }
 
   _displayEvent(){

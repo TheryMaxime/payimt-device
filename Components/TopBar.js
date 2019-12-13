@@ -3,11 +3,14 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 
-class TopBar extends React.Component {
 
-  _show(){
-    console.log(this.props);
-  }
+/*
+*
+* Component correspondant à la barre de navigation en haut des écrans. (logo IMT, Ecran courant)
+*
+*/
+
+class TopBar extends React.Component {
 
   render() {
     const { title } = this.props

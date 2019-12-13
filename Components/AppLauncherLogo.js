@@ -1,5 +1,11 @@
 //Components/AppLauncherLogo.js
 
+/*
+*
+* Component correspondant au launcher de l'application. Il affiche le logo de l'application pendant 3 secondes.
+*
+*/
+
 import React from 'react'
 import { View,Image, StyleSheet, ActivityIndicator} from 'react-native'
 

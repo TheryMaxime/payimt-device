@@ -4,8 +4,15 @@ import React from 'react'
 import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 
+/*
+*
+* Component correspondant à la façon dont un produit va être affiché dans la flat list (du component Shop)
+*
+*/
+
 class ShopItem extends React.Component {
 
+  // Récupérer le montant total du panier. (Somme de tous les produits sélectionnés)
   _getAmount() {
     let itemIndex = this.props.cart.findIndex(item => item.product_id === this.props.item.product_id)
     if (itemIndex !== -1) {

@@ -156,6 +156,7 @@ const launcherStack = createStackNavigator ({
     },
 })
 
+// On crée un Switch Navigator qui permettra de passer d'un StackNavigator (Ici Page de démarrage, page de login), à un tabNavigator (Application et ses onglets)
 export default createAppContainer(
   createSwitchNavigator({
     AuthLoading: AuthLoadingScreen,

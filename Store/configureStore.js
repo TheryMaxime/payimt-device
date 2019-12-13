@@ -8,26 +8,8 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import manageCart from './Reducers/cartReducer'
 import manageUser from './Reducers/userReducer'
 
-/*async function saveToAsynchStorage(state){
-  try{
-    console.log(state.user.isLoggedIn);
-    const serializedState = JSON.stringify(state)
-    await AsyncStorage.setItem('state', serializedState)
-  }catch(e){
-    console.log(e)
-  }
-}*/
-
-/*async function loadFromLocalStorage(){
-  try{
-    const serializedState = await AsyncStorage.getItem('state')
-    const jsonState = JSON.parse(serializedState)
-    return jsonState
-  }catch(e){
-    console.log(e);
-    return undefined
-  }
-}*/
+// La persistance permet ici de sauvegarder dans l'espace de stockage du téléphone (storage) le state global.
+// Ce qui permettra au prochain démarrage de l'application de savoir par exemple si l'utilisateur est resté connecté ou pas lors de sa dernière utilisation.
 
 const persistConfig = {
  key: 'state',
@@ -46,6 +28,3 @@ const pReducer = persistReducer(persistConfig, reducer)
 
 export const store = createStore(pReducer)
 export const pStore = persistStore(store)
-//store.subscribe(() => saveToAsynchStorage(store.getState()))
-
-//export default pStore
