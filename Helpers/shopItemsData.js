@@ -1,5 +1,7 @@
 //Helpers/shopItemsData.js
 
+//Données de test pour affichage aux endroits prévus.
+
 export default data = [
   {
     id: 165954,
@@ -21,24 +23,4 @@ export default data = [
     title: "Café",
     price: 0.5
   },
-  {
-    id: 9999999,
-    title: "Gold",
-    price: 99
-  },
-  {
-    id: 125896,
-    title: "Choub",
-    price: 0.2
-  },
-  {
-    id: 135978,
-    title: "Kebab",
-    price: 3
-  },
-  {
-    id: 147852369,
-    title: "Ice tea",
-    price: 0.8
-  }
 ]

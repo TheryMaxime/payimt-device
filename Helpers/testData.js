@@ -1,4 +1,6 @@
-// Helpers/filmsData.js
+// Helpers/testData.js
+
+//Données de test pour affichage aux endroits prévus.
 
 export default data = [
    {
@@ -22,32 +24,4 @@ export default data = [
       amount:"5,6 €",
       status:"paid",
    },
-   {
-      id:4,
-      name:'Flowman',
-      date:'10/11/12',
-      amount:"10 €",
-      status:"stolen",
-   },
-   {
-      id:5,
-      name:'Flowman',
-      date:'10/11/12',
-      amount:"10 €",
-      status:"stolen",
-   },
-   {
-      id:6,
-      name:'Flowman',
-      date:'10/11/12',
-      amount:"10 €",
-      status:"stolen",
-   },
-   {
-      id:7,
-      name:'Flowman',
-      date:'10/11/12',
-      amount:"10 €",
-      status:"stolen",
-   }
 ]

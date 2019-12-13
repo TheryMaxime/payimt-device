@@ -23,8 +23,8 @@ const reducers = {
   user: manageUser
 }
 
-const reducer = combineReducers(reducers)
-const pReducer = persistReducer(persistConfig, reducer)
+const reducer = combineReducers(reducers) // On combine les différents reducers que l'on souhaite utiliser
+const pReducer = persistReducer(persistConfig, reducer) // On crée un reducer persistant avec une configuration et une combinaison de reducers
 
-export const store = createStore(pReducer)
-export const pStore = persistStore(store)
+export const store = createStore(pReducer) // On crée un store classique...
+export const pStore = persistStore(store) // ... Puis on le configure en tant que store persistant

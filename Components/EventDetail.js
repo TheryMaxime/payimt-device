@@ -3,8 +3,6 @@
 import React from 'react'
 import {Linking, ActivityIndicator, FlatList, View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, StatusBar, TouchableOpacity, ImageBackground, ScrollView } from 'react-native'
 import eventTests from '../Helpers/testDataEvent'
-import {getEvent} from '../API/APItests'
-import {paymentRequest_do} from '../API/LydiaAPI'
 
 function Separator() {
   return <View style={styles.separator} />
@@ -24,17 +22,6 @@ class EventDetail extends React.Component {
     this.state={
       event: undefined
     }
-  }
-
-  componentDidMount(){
-    this.setState({
-      event: getEvent(this.props.navigation.state.params.idEvent)
-    })
-  }
-
-  // récupère le prix de l'évènement
-  _getEventPrice(){
-    return this.state.event.price
   }
 
   // appui sur le bouton payer (voir Shop -> _pay)

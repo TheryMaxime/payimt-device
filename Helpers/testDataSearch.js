@@ -1,39 +1,21 @@
 // Helpers/testDataSearch.js
 
+//Données de test pour affichage aux endroits prévus.
+
 export default data = [
    {
       id:1,
       firstName:'Antoine',
-      lastName:'BOUCHEZ',
+      lastName:'B',
    },
    {
      id:2,
      firstName:'Maxime',
-     lastName:'THERY',
+     lastName:'T',
    },
    {
      id:3,
-     firstName:'Sala',
-     lastName:'RINO',
-   },
-   {
-     id:4,
-     firstName:'Seb',
-     lastName:'LEDE',
-   },
-   {
-     id:5,
-     firstName:'Juan',
-     lastName:'MALO',
-   },
-   {
-     id:6,
-     firstName:'Boo',
-     lastName:'BA',
-   },
-   {
-     id:7,
-     firstName:'Kaa',
-     lastName:'RIS',
+     firstName:'Un',
+     lastName:'TYPE',
    }
 ]

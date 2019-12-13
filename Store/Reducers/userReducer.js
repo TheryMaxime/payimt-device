@@ -1,3 +1,5 @@
+//Store/Reducers/userReducer.js
+
 const initialState = {firstname:"", lastname:"", phoneNumber:"", isRegistered:false, isLoggedIn:false}
 
 

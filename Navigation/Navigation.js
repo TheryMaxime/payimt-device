@@ -7,7 +7,6 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import Search from '../Components/Search'
 import SearchDetail from '../Components/SearchDetail'
-import Home from '../Components/Home'
 import Shop from '../Components/Shop'
 import Event from '../Components/Event'
 import EventDetail from '../Components/EventDetail'
@@ -46,15 +45,6 @@ const ShopStackNavigator = createStackNavigator({
     screen: Shop,
     navigationOptions: {
       headerTitle: () => <TopBar title="Shop"/>
-    }
-  }
-})
-
-const HomeStackNavigator = createStackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      headerTitle: () => <TopBar title="Pay'IMT"/>
     }
   }
 })
@@ -139,12 +129,6 @@ const LoginScreen = createStackNavigator({
     }
   }
 
-})
-
-const SettingsScreen = createStackNavigator({
-  Settings: {
-    screen: Settings
-  }
 })
 
 const launcherStack = createStackNavigator ({

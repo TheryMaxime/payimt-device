@@ -36,13 +36,6 @@ class Shop extends React.Component {
     }).catch(error => {
       console.log(error)
     })
-
-    /*
-    this.setState({
-      shopItems: [...this.state.shopItems, ...data],
-      isLoading: false
-    })
-    */
   }
 
   // si il ya un temps de réponse visible à l'oeil, on fait apparaître un rond de chargement

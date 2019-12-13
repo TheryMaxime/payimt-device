@@ -1,7 +1,7 @@
 // Components/Search.js
 
 import React from 'react'
-import {ActivityIndicator, FlatList, View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, StatusBar, TouchableOpacity, ImageBackground } from 'react-native'
+import {FlatList, View, Text, TextInput, Button, StyleSheet, ImageBackground } from 'react-native'
 import searchTests from '../Helpers/testDataSearch'
 import SearchItem from './SearchItem'
 
@@ -9,6 +9,7 @@ function Separator() {
   return <View style={styles.separator} />
 }
 
+// A mettre à la place du texte "work in progress ....."
 function SearchRender(){
   return(
     <View>
@@ -38,6 +39,13 @@ function SearchRender(){
   )
 }
 
+
+/*
+*
+* Component correspondant à l'écran de recherche de contacts. Non implémenté.
+*
+*/
+
 class Search extends React.Component {
 
   constructor(props){
@@ -50,15 +58,10 @@ class Search extends React.Component {
 
   _searchTextInputChanged(text) {
         this.searchText = text
-        console.log(this.searchText);
   }
 
   _displayDetailForSearch = (idContact) => {
     this.props.navigation.navigate("SearchDetail", {idContact: idContact})
-  }
-
-  _showSearchedText(){
-    console.log(this.searchText)
   }
 
   render(){

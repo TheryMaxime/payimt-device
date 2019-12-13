@@ -1,7 +1,7 @@
 // Components/LoginIMT.js
 
 import React from 'react'
-import {View, Text, Image, TextInput, Button, StyleSheet, ImageBackground} from 'react-native'
+import {View, Text, TextInput, Button, StyleSheet, ImageBackground} from 'react-native'
 import {connect} from 'react-redux'
 import { login } from '../API/ServerAPI'
 
@@ -126,42 +126,43 @@ class LoginIMT extends React.Component {
             <Separator/>
 
             <TextInput
-            // on teste si l'entrée est valide, et on choisit le style selon la réponse (marqué de rouge si une erreur) [1]
-            style={[styles.textinputvalid,this.state.firstnameValidate? null : styles.textinputinvalid]}
-            placeholder=' First name (Ex: Jean)'
-            placeholderTextColor={'rgba(128,128,128,0.8)'}
-            onChangeText={(text) => this._validate(text, 'firstname')}
-            ref={this.firstnameInput}
+              // on teste si l'entrée est valide, et on choisit le style selon la réponse (marqué de rouge si une erreur) [1]
+              style={[styles.textinputvalid,this.state.firstnameValidate? null : styles.textinputinvalid]}
+              placeholder=' First name (Ex: Jean)'
+              placeholderTextColor={'rgba(128,128,128,0.8)'}
+              onChangeText={(text) => this._validate(text, 'firstname')}
+              ref={this.firstnameInput}
             />
             <Separator/>
             <TextInput
-            // voir [1]
-            style={[styles.textinputvalid,this.state.lastnameValidate? null : styles.textinputinvalid]}
-            placeholder=' Last name (Ex: Moulin)'
-            placeholderTextColor={'rgba(128,128,128,0.8)'}
-            onChangeText={(text) => this._validate(text,'lastname')}
-            ref={this.lastnameInput}
+              // voir [1]
+              style={[styles.textinputvalid,this.state.lastnameValidate? null : styles.textinputinvalid]}
+              placeholder=' Last name (Ex: Moulin)'
+              placeholderTextColor={'rgba(128,128,128,0.8)'}
+              onChangeText={(text) => this._validate(text,'lastname')}
+              ref={this.lastnameInput}
             />
             <Separator/>
             <TextInput
-            // voir [1]
-            style={[styles.textinputvalid,this.state.phoneValidate? null : styles.textinputinvalid]}
-            placeholder=' Phone number (Ex: 0606060606)'
-            placeholderTextColor={'rgba(128,128,128,0.8)'}
-            keyboardType='phone-pad'
-            onChangeText={(text) => this._validate(text, 'phoneNumber')}
-            ref={this.phoneInput}
+              // voir [1]
+              style={[styles.textinputvalid,this.state.phoneValidate? null : styles.textinputinvalid]}
+              placeholder=' Phone number (Ex: 0606060606)'
+              placeholderTextColor={'rgba(128,128,128,0.8)'}
+              keyboardType='phone-pad'
+              onChangeText={(text) => this._validate(text, 'phoneNumber')}
+              ref={this.phoneInput}
             />
-            <Text style={{textAlign:'center',fontStyle:'italic', color:'gray'}}>If you already have a Lydia account, you can provide the phone number associated with it.</Text>
+            <Text style={styles.infomessage}>If you already have a Lydia account, you can provide the phone number associated with it.</Text>
 
             <Separator/><Separator/><Separator/>
 
             <Button
-            title ='Login'
-            width = '300'
-            height = '45'
-            color = 'rgb(0,31,65)'
-            onPress={() => this._signIn()}/>
+              title ='Login'
+              width = '300'
+              height = '45'
+              color = 'rgb(0,31,65)'
+              onPress={() => this._signIn()}
+            />
 
             <Separator/>
           </View>
@@ -190,14 +191,6 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     //backgroundColor:'red'
   },
-  login2:{
-    alignItems:'center',
-    //backgroundColor:'blue'
-  },
-  checkbox_view:{
-    flexDirection:'row',
-    alignItems: 'flex-start',
-  },
   welcometext:{
     fontSize:35,
     fontWeight:'bold',
@@ -222,18 +215,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 5,
     borderBottomColor: 'red',
   },
-  checkboxstyle:{
-    flex:0.1,
-  },
-  checkbox_text:{
-    flex:0.9,
-    fontSize:25,
+  infomessage:{
+    textAlign:'center',
     fontStyle:'italic',
-    color:'rgba(0,31,65,0.4)'
-  },
-  buttonlogin:{
-    height:45,
-    backgroundColor:'rgb(0,31,65)',
+    color:'gray'
   },
   separator:{
     marginTop:20

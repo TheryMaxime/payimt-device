@@ -4,6 +4,13 @@ import React from 'react'
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
 import data from '../Helpers/testDataEvent'
 
+
+/*
+*
+* Component correspondant à la mise en page d'un contact dans la flatlist (voir Search)
+*
+*/
+
 class SearchItem extends React.Component {
 
   constructor(props){
@@ -43,13 +50,11 @@ const styles = StyleSheet.create({
    textAlign:'left',
    textAlignVertical:'center',
    fontSize:30,
-   //fontWeight:'bold',
    color:'rgb(0,31,65)'
  },
  lastname:{
    flex:1,
    height:30,
-  // marginLeft:5,
    textAlign:'left',
    textAlignVertical:'center',
    fontSize:30,

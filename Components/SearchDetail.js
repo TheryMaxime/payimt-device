@@ -1,13 +1,18 @@
 // Components/SearchDetail.js
 
 import React from 'react'
-import {ActivityIndicator, FlatList, View, Text, Image, TextInput, Button, StyleSheet, Dimensions, CheckBox, StatusBar, TouchableOpacity, ImageBackground, InputText } from 'react-native'
+import {View, Text, TextInput, Button, StyleSheet, ImageBackground } from 'react-native'
 import eventTests from '../Helpers/testDataEvent'
-import {getContact} from '../API/APItests'
 
 function Separator() {
   return <View style={styles.separator} />
 }
+
+/*
+*
+* Component correspondant au détail d'un contact.
+*
+*/
 
 class SearchDetail extends React.Component {
 
@@ -22,20 +27,12 @@ class SearchDetail extends React.Component {
 
   _amountTextInputChanged(text) {
         this.amountText = text
-        console.log(this.amountText);
   }
 
   componentDidMount(){
-    /*
-    getContact(this.props.navigation.state.params.idContact).then(data => {
-      this.setState({
-        contact: data
-      })
-    })
-    */
-    this.setState({
+    /*this.setState({
       contact: getContact(this.props.navigation.state.params.idContact)
-    })
+    })*/
   }
 
   _displayContactActions(){
@@ -106,12 +103,6 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     color:'rgb(0,31,65)',
     textAlign:'center'
-  },
-  amountview:{
-    width:'90%',
-    borderWidth:3,
-    borderRadius:10,
-    borderColor:'rgb(0,31,65)'
   },
   buttonsview:{
     flexDirection:'row',
