@@ -17,6 +17,9 @@ class Settings extends React.Component {
     super(props)
   }
 
+
+  // lorsque l'utilisateur souhaite se déconnecter, on vient appeler une action du store afin de modifier le state global de l'application
+  // L'action va mettre isLoggedIn a false et lorsque l'utilisateur va relancer l'application il sera redirigé vers l'écran de Login (Voir component AuthLoadingScreen)
   _logOut = () => {
     alert('Vous vous êtes déconnecté! A bientôt sur Pay\'IMT!')
     const action = {

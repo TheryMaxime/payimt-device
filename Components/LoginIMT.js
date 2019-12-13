@@ -1,7 +1,7 @@
 // Components/LoginIMT.js
 
 import React from 'react'
-import {View, Text, Image, TextInput, Button, StyleSheet, ImageBackground} from 'react-native'
+import {View, Text, TextInput, Button, StyleSheet, ImageBackground} from 'react-native'
 import {connect} from 'react-redux'
 import { login } from '../API/ServerAPI'
 
@@ -9,6 +9,11 @@ function Separator() {
   return <View style={styles.separator} />
 }
 
+/*
+*
+* Component correspondant à l'écran de login
+*
+*/
 
 class LoginIMT extends React.Component {
 
@@ -16,7 +21,7 @@ class LoginIMT extends React.Component {
     super(props)
     this.firstnameInput = React.createRef()
     this.lastnameInput = React.createRef()
-    this.phoneInput=React.createRef()
+    this.phoneInput = React.createRef()
     this.firstname = ""
     this.lastname = ""
     this.phoneNumber = ""
@@ -27,11 +32,13 @@ class LoginIMT extends React.Component {
     }
   }
 
+  // lors de l'ajout d'un caractère dans l'un des input text, on va venir tester si il correspond à la saisie que l'input attend.
   _validate(text, type){
-    alpha=/^[a-zA-Z]+$/
-    num=/^[0-9]+$/
+    alpha=/^[a-zA-Z]+$/  // sera utilisé pour tester si un caractère entré est une lettre minuscule ou masjuscule.
+    num=/^[0-9]+$/       // sera utilisé pour tester si un caractère entré est un chiffre compris en 0 et 9
 
     switch (type){
+      // Pour l'input text correspondant au prénom
       case 'firstname':
         if(alpha.test(text)){
           this.setState({firstnameValidate:true})
@@ -42,6 +49,7 @@ class LoginIMT extends React.Component {
           this.firstname=text
         }
       break
+      // Pour l'input text correspondant au nom de famille
       case 'lastname':
         if(alpha.test(text)){
           this.setState({lastnameValidate:true})
@@ -52,6 +60,7 @@ class LoginIMT extends React.Component {
           this.lastname=text
         }
       break
+      // Pour l'input text correspondant au numéro de téléphone
       case 'phoneNumber':
         if(num.test(text)){
           this.phoneNumber=text
@@ -69,6 +78,7 @@ class LoginIMT extends React.Component {
 
 
   _signIn = () => {
+    // vérifications sur la longueur et sur la validité des entrées saisies dans les input
     if( this.firstname.length > 0 && this.state.firstnameValidate==true
         && this.lastname.length > 0 && this.state.lastnameValidate==true
           && this.phoneNumber.length == 10 && this.phoneNumber[0] == 0 && this.state.phoneValidate==true){
@@ -96,6 +106,7 @@ class LoginIMT extends React.Component {
     }
     else{
       alert('Please provide valid entries')
+      // si les input ne sont pas valides, on les efface
       this.firstnameInput.current.clear()
       this.lastnameInput.current.clear()
       this.phoneInput.current.clear()
@@ -115,39 +126,43 @@ class LoginIMT extends React.Component {
             <Separator/>
 
             <TextInput
-            style={[styles.textinputvalid,this.state.firstnameValidate? null : styles.textinputinvalid]}
-            placeholder=' First name (Ex: Jean)'
-            placeholderTextColor={'rgba(128,128,128,0.8)'}
-            onChangeText={(text) => this._validate(text, 'firstname')}
-            ref={this.firstnameInput}
+              // on teste si l'entrée est valide, et on choisit le style selon la réponse (marqué de rouge si une erreur) [1]
+              style={[styles.textinputvalid,this.state.firstnameValidate? null : styles.textinputinvalid]}
+              placeholder=' First name (Ex: Jean)'
+              placeholderTextColor={'rgba(128,128,128,0.8)'}
+              onChangeText={(text) => this._validate(text, 'firstname')}
+              ref={this.firstnameInput}
             />
             <Separator/>
             <TextInput
-            style={[styles.textinputvalid,this.state.lastnameValidate? null : styles.textinputinvalid]}
-            placeholder=' Last name (Ex: Moulin)'
-            placeholderTextColor={'rgba(128,128,128,0.8)'}
-            onChangeText={(text) => this._validate(text,'lastname')}
-            ref={this.lastnameInput}
+              // voir [1]
+              style={[styles.textinputvalid,this.state.lastnameValidate? null : styles.textinputinvalid]}
+              placeholder=' Last name (Ex: Moulin)'
+              placeholderTextColor={'rgba(128,128,128,0.8)'}
+              onChangeText={(text) => this._validate(text,'lastname')}
+              ref={this.lastnameInput}
             />
             <Separator/>
             <TextInput
-            style={[styles.textinputvalid,this.state.phoneValidate? null : styles.textinputinvalid]}
-            placeholder=' Phone number (Ex: 0606060606)'
-            placeholderTextColor={'rgba(128,128,128,0.8)'}
-            keyboardType='phone-pad'
-            onChangeText={(text) => this._validate(text, 'phoneNumber')}
-            ref={this.phoneInput}
+              // voir [1]
+              style={[styles.textinputvalid,this.state.phoneValidate? null : styles.textinputinvalid]}
+              placeholder=' Phone number (Ex: 0606060606)'
+              placeholderTextColor={'rgba(128,128,128,0.8)'}
+              keyboardType='phone-pad'
+              onChangeText={(text) => this._validate(text, 'phoneNumber')}
+              ref={this.phoneInput}
             />
-            <Text style={{textAlign:'center',fontStyle:'italic', color:'gray'}}>If you already have a Lydia account, you can provide the phone number associated with it.</Text>
+            <Text style={styles.infomessage}>If you already have a Lydia account, you can provide the phone number associated with it.</Text>
 
             <Separator/><Separator/><Separator/>
 
             <Button
-            title ='Login'
-            width = '300'
-            height = '45'
-            color = 'rgb(0,31,65)'
-            onPress={() => this._signIn()}/>
+              title ='Login'
+              width = '300'
+              height = '45'
+              color = 'rgb(0,31,65)'
+              onPress={() => this._signIn()}
+            />
 
             <Separator/>
           </View>
@@ -176,14 +191,6 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     //backgroundColor:'red'
   },
-  login2:{
-    alignItems:'center',
-    //backgroundColor:'blue'
-  },
-  checkbox_view:{
-    flexDirection:'row',
-    alignItems: 'flex-start',
-  },
   welcometext:{
     fontSize:35,
     fontWeight:'bold',
@@ -208,24 +215,17 @@ const styles = StyleSheet.create({
     borderBottomWidth: 5,
     borderBottomColor: 'red',
   },
-  checkboxstyle:{
-    flex:0.1,
-  },
-  checkbox_text:{
-    flex:0.9,
-    fontSize:25,
+  infomessage:{
+    textAlign:'center',
     fontStyle:'italic',
-    color:'rgba(0,31,65,0.4)'
-  },
-  buttonlogin:{
-    height:45,
-    backgroundColor:'rgb(0,31,65)',
+    color:'gray'
   },
   separator:{
     marginTop:20
   }
 })
 
+// On envoie dans les props l'action afin que le store ensuite agisse en fonction de l'action.
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatch: (action) => { dispatch(action) }

@@ -7,7 +7,6 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import Search from '../Components/Search'
 import SearchDetail from '../Components/SearchDetail'
-import Home from '../Components/Home'
 import Shop from '../Components/Shop'
 import Event from '../Components/Event'
 import EventDetail from '../Components/EventDetail'
@@ -15,6 +14,7 @@ import TopBar from '../Components/TopBar'
 import LoginIMT from '../Components/LoginIMT'
 import Settings from '../Components/Settings'
 import AuthLoadingScreen from '../Components/AuthLoadingScreen'
+import AppLauncherLogo from '../Components/AppLauncherLogo'
 
 const SearchStackNavigator = createStackNavigator({
   Search: {
@@ -45,15 +45,6 @@ const ShopStackNavigator = createStackNavigator({
     screen: Shop,
     navigationOptions: {
       headerTitle: () => <TopBar title="Shop"/>
-    }
-  }
-})
-
-const HomeStackNavigator = createStackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      headerTitle: () => <TopBar title="Pay'IMT"/>
     }
   }
 })
@@ -140,19 +131,24 @@ const LoginScreen = createStackNavigator({
 
 })
 
-const SettingsScreen = createStackNavigator({
-  Settings: {
-    screen: Settings
-  }
+const launcherStack = createStackNavigator ({
+    Logo: {
+        screen: AppLauncherLogo,
+        navigationOptions: {
+            header: null,
+        },
+    },
 })
 
+// On crée un Switch Navigator qui permettra de passer d'un StackNavigator (Ici Page de démarrage, page de login), à un tabNavigator (Application et ses onglets)
 export default createAppContainer(
   createSwitchNavigator({
     AuthLoading: AuthLoadingScreen,
     App: PayIMTNavigator,
     Auth: LoginScreen,
+    Logo: launcherStack
   },
   {
-    initialRouteName: 'AuthLoading',
+    initialRouteName: 'Logo',
   })
 )

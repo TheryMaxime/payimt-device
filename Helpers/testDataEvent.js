@@ -1,5 +1,7 @@
 // Helpers/testDataEvent.js
 
+//Données de test pour affichage aux endroits prévus.
+
 export default data = [
    {
       id:1,
@@ -7,7 +9,7 @@ export default data = [
       date:'10/11/12',
       price:3,
       club:"BDE",
-      description:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      description:"description"
    },
    {
       id:2,
@@ -15,7 +17,7 @@ export default data = [
       date:'10/11/12',
       price:0.5,
       club:"Bar",
-      description:"bbbbbbbbbbbbbbb"
+      description:"soirée cool"
    },
    {
       id:3,
@@ -23,38 +25,6 @@ export default data = [
       date:'10/11/12',
       price:2,
       club:"paid",
-      description:"ccccccccccccccccccccccccccccccc"
-   },
-   {
-      id:4,
-      name:'Flowman',
-      date:'10/11/12',
-      price:"10 €",
-      club:"stolen",
-      description:""
-   },
-   {
-      id:5,
-      name:'Flowman',
-      date:'10/11/12',
-      price:"10 €",
-      club:"stolen",
-      description:""
-   },
-   {
-      id:6,
-      name:'Flowman',
-      date:'10/11/12',
-      price:"10 €",
-      club:"stolen",
-      description:""
-   },
-   {
-      id:7,
-      name:'Flowman',
-      date:'10/11/12',
-      price:"10 €",
-      club:"stolen",
-      description:""
+      description:"Hmmmmmm"
    }
 ]

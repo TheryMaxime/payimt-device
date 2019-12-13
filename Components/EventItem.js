@@ -3,6 +3,13 @@
 import React from 'react'
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
 
+
+/*
+*
+* Component correspondant à la disposition des éléments présentés dans la flatlist pour les évènements
+*
+*/
+
 class EventItem extends React.Component {
 
   constructor(props){

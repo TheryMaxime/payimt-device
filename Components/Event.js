@@ -10,7 +10,6 @@ function Separator() {
 }
 
 //function to use for replacing the "work in progress" text by the Event component render
-
 function EventRender(){
   return(
     <View>
@@ -38,6 +37,12 @@ function EventRender(){
   )
 }
 
+/*
+*
+* Component correspondant à l'écran d'évènements
+*
+*/
+
 class Event extends React.Component {
 
   constructor(props){
@@ -50,19 +55,17 @@ class Event extends React.Component {
     }
   }
 
+  //fonction appellée lors de l'ajout d'un caractère sur l'inputtext
   _searchTextInputChanged(text) {
         this.searchText = text
-        console.log(this.searchText);
   }
 
+  // lors du click sur l'évènement, on affiche ses détails (voir le component EventDetail)
   _displayDetailForEvent = (idEvent) => {
      this.props.navigation.navigate("EventDetail", {idEvent: idEvent})
   }
 
-  _showSearchedText(){
-    console.log(this.searchText)
-  }
-
+  // filtre appliqué sur la flatlist selon le texte inscrit dans l'input text
   searchFilterFunction = text => {
     const newData = this.arrayholder.filter(item => {
       const itemData = `${item.name.toUpperCase()} ${item.club.toUpperCase()}`
