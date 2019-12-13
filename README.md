@@ -22,8 +22,11 @@ npm install #Installer toutes les dépendances du projet sur votre dossier local
 npm start
 ```
 Veillez à ce qu'un émulateur/simulateur soit installé et lancé sur votre machine (tuto: https://facebook.github.io/react-native/docs/getting-started)
+
 Une fois Expo lancé, vous allez voir apparaitre une page sur votre navigateur avec des informations sur le metro bundler (informations visibles également sur le terminal).
+
 Vous pouvez lancer l'application sur le device virtuel soit avec la touche 'a' sur l'invite de commande, soit avec l'option "Run on..." sur la page web générée.
+
 L'application va se télécharger depuis votre ordinateur vers votre device et vous pourrez ensuite tester les fonctionnalités.
 
 ## Présentation de l'interface utilisateur
